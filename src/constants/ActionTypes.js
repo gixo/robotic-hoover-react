@@ -1,0 +1,1 @@
+export const INPUT_FILE_LOADED = "INPUT_FILE_LOADED";
