@@ -62,13 +62,6 @@ Example (matching the input above):
 1
 ```
 
-## Deliverable
-
-The program:
-
-* Is a React/Redux app hosted on GitHub Pages
-* Todo: complete section
-
 ## Available Scripts
 
 In the project directory, you can run:
