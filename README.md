@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/gixo/robotic-hoover-react.svg?token=or51g3qDthHp2zmFnvEs&branch=master)](https://travis-ci.com/gixo/robotic-hoover-react) [![codecov](https://codecov.io/gh/gixo/robotic-hoover-react/branch/master/graph/badge.svg?token=4WjMWRadXz)](https://codecov.io/gh/gixo/robotic-hoover-react) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ciampo/macro-carousel/blob/master/LICENSE)
 
+Live demo: [gixo.github.io/robotic-hoover-react](https://gixo.github.io/robotic-hoover-react)
+
 ## Introduction
 
 A program that navigates an imaginary robotic hoover (much like a [Roomba](https://en.wikipedia.org/wiki/Roomba)) through an equally imaginary room based on:
