@@ -1,14 +1,13 @@
 # robotic-hoover-js
-A robotic hoover navigation algorithm - JavaScript Implementation
 
 ## Introduction
 
-You will write a program that navigates an imaginary robotic hoover (much like a [Roomba](https://en.wikipedia.org/wiki/Roomba)) through an equally imaginary room based on:
+A program that navigates an imaginary robotic hoover (much like a [Roomba](https://en.wikipedia.org/wiki/Roomba)) through an equally imaginary room based on:
 
 * room dimensions as [X and Y coordinates](https://en.wikipedia.org/wiki/Cartesian_coordinate_system), identifying the top right corner of the room rectangle. This room is divided up in a grid based on these dimensions; a room that has dimensions X: 5 and Y: 5 has 5 columns and 5 rows, so 25 possible hoover positions. The bottom left corner is the point of origin for our coordinate system, so as the room contains all coordinates its bottom left corner is defined by X: 0 and Y: 0.
 * locations of patches of dirt, also defined by X and Y coordinates identifying the bottom left corner of those grid positions.
 * an initial hoover position (X and Y coordinates like patches of dirt)
-* driving instructions (as [cardinal directions](https://en.wikipedia.org/wiki/Cardinal_direction) where e.g. N and E mean "go north" and "go east" respectively) 
+* driving instructions (as [cardinal directions](https://en.wikipedia.org/wiki/Cardinal_direction) where e.g. N and E mean "go north" and "go east" respectively)
 
 The room will be rectangular, has no obstacles (except the room walls), no doors and all locations in the room will be clean (hoovering has no effect) except for the locations of the patches of dirt presented in the program input.
 
@@ -25,9 +24,9 @@ The goal of the program is to take the room dimensions, the locations of the dir
 
 ## Input
 
-Program input will be received in a file with the format described here. You can process it however you like.
+Program input will be received in a file with the format described here. It can be processed.
 
-The file will be named `input.txt` and reside in the same directory as your executable program / web page.
+The file will be named `input.txt` and reside in the same directory as the executable program / web page.
 
 Example:
 
@@ -49,7 +48,7 @@ NNESEESWNWW
 
 Program output should be printed to the standard output (STDOUT) of the terminal (or equivalent in the browser, console.log())
 
-* The first line of your program output should display the X and Y coordinates marking the position of the hoover after processing all commands.
+* The first line of the program output should display the X and Y coordinates marking the position of the hoover after processing all commands.
 * The second line of the program output should display the number of patches of dirt the robot cleaned up
 
 Example (matching the input above):
@@ -63,24 +62,30 @@ Example (matching the input above):
 
 The program:
 
-* is either a command-line / terminal application or web page
-* must run on Mac OS X, Linux (x86-64) or in a modern browser
-* must be written in javascript
-* can make use of any existing open source libraries that don't directly address the problem statement (use your best judgement).
+* Is a React/Redux app hosted on GitHub Pages
+* Todo: complete section
 
-Send us:
+## Available Scripts
 
-* The full source code, including any code written which is not part of the normal program run (scripts, tests)
-* Clear instructions on how to obtain and run the program
-* Please provide any deliverables and instructions using a public Github (or similar) Repository as several people will need to inspect the solution
+In the project directory, you can run:
 
-## Evaluation
+### `npm start`
 
-The point of the exercise is for us to see some of the code you wrote (and should be proud of). We believe we can learn a lot from how you approach a small challenge like this and think it can be fun to write as well!
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-We will especially consider:
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-* Code organisation
-* Quality
-* Readability
-* Actually solving the problem
+### `npm test`
+
+Runs the test watcher in an interactive mode.<br>
+By default, runs tests related to files changed since the last commit.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.<br>
+It bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.<br>
+The app is ready to be deployed!
