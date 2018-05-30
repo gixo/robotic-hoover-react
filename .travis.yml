@@ -1,12 +1,15 @@
 language: node_js
 node_js:
-  - 6
+  - 8
+install:
+  - npm install -g codecov
 cache:
   directories:
     - node_modules
 script:
   - npm run build
-  - npm test
+  - npm test -- --coverage
+  - codecov --token=:$CODECOV_TOKEN
 deploy:
   provider: pages
   skip-cleanup: true
