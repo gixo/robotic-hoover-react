@@ -17,6 +17,7 @@
     "start": "cross-env PORT=3002 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -24,6 +25,9 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.6",
-    "gh-pages": "^1.1.0"
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "gh-pages": "^1.1.0",
+    "redux-mock-store": "^1.5.1"
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class RoomOutput extends Component {
   render() {
-    return <div />;
+    return <textarea />;
   }
 }
 

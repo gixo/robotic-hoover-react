@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-class RoomViz extends Component {
-  render() {
-    return <div />;
-  }
-}
+const RoomViz = ({ rows, cols, children }) => (
+  <svg viewBox={[0, 1 - rows, cols, rows]} preserveAspectRatio="none">
+    {children}
+  </svg>
+);
 
 export default RoomViz;
