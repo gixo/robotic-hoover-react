@@ -5,7 +5,7 @@ install:
   - npm install -g codecov
 script:
   - npm run lint
-  - npm tes
+  - npm test
 after_success:
   - npm run coverage
   - codecov --token=$CODECOV_TOKEN
