@@ -1,9 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import configureStore from "redux-mock-store";
+import { shallow } from "enzyme";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+import App from "./App";
+
+const setup = (setupProps = {}) => {
+  const store = configureStore()();
+  const wrapper = shallow(<App store={store} />);
+
+  return {
+    store,
+    wrapper
+  };
+};
+
+describe("App", () => {
+  test("renders without crashing", () => {
+    const { wrapper } = setup();
+    expect(wrapper).toMatchSnapshot();
+  });
 });
