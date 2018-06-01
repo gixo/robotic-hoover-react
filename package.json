@@ -21,13 +21,16 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "coverage": "npm test -- --coverage"
+    "coverage": "npm test -- --coverage",
+    "lint": "eslint src"
   },
   "devDependencies": {
+    "ajv": "^6.5.0",
     "cross-env": "^5.1.6",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "gh-pages": "^1.1.0",
+    "eslint-config-react-app": "^2.1.0",
+    "gh-pages": "^1.2.0",
     "redux-mock-store": "^1.5.1"
   }
 }
