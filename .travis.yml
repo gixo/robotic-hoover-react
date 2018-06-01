@@ -1,13 +1,12 @@
 language: node_js
 node_js:
-  - 6
+  - 8
 install:
   - npm install -g codecov
-cache:
-  directories:
-    - node_modules
 script:
-  - npm run build
+  - npm run lint
+  - npm tes
+after_success:
   - npm run coverage
   - codecov --token=$CODECOV_TOKEN
 deploy:
