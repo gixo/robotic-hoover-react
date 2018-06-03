@@ -1,4 +1,4 @@
-import * as types from "../constants/ActionTypes";
+import * as types from "./ActionTypes";
 
 export const requestInputFile = subreddit => ({
   type: types.REQUEST_INPUT_FILE,

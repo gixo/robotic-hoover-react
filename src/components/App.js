@@ -25,11 +25,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Robotic Hoover</h1>
+      <div className="app">
+        <header className="app-header">
+          <h1 className="app-title">Robotic Hoover</h1>
+          <a
+            id="back-to-code"
+            href="https://github.com/gixo/robotic-hoover-react"
+          >
+            Back to code
+          </a>
         </header>
-        <div className="App-content">
+        <div className="app-content">
           <RoomSpec />
           <RoomViz />
           <ResultOutput />

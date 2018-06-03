@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "homepage": "http://gixo.github.io/robotic-hoover-react",
   "private": true,
+  "url": "https://github.com/gixo/robotic-hoover-react",
+  "license": "MIT",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.4.0",

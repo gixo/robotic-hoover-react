@@ -1,13 +1,26 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
+.app-header {
   background-color: #222;
   padding: 20px;
   color: white;
 }
 
-.App-title {
+.app-title {
   font-size: 1.5em;
+}
+
+#back-to-code {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 1em;
+  border: 1px dashed currentColor;
+  font-family: monospace;
+  font-size: 1.25rem;
+
+  color: inherit;
 }

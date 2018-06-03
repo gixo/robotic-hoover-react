@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import * as types from "../constants/ActionTypes";
+import * as types from "../actions/ActionTypes";
 
 const selectedSubreddit = (state = "input.txt", action) => {
   switch (action.type) {
