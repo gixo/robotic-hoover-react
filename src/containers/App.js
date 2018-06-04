@@ -1,27 +1,27 @@
 import React, { Component } from "react";
-import RoomSpec from "./RoomSpec";
-import RoomViz from "./RoomViz";
-import ResultOutput from "./ResultOutput";
-import { fetchPosts } from "../actions";
-import PropTypes from "prop-types";
+import RoomSpec from "../components/RoomSpec";
+import RoomViz from "../components/RoomViz";
+import ResultOutput from "../components/ResultOutput";
 import { connect } from "react-redux";
+import { fetchPosts } from "../api/input";
+import PropTypes from "prop-types";
 
 import "./App.css";
 
 class App extends Component {
-  /*
   static propTypes = {
-    selectedSubreddit: PropTypes.string.isRequired,
-    posts: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    lastUpdated: PropTypes.number,
+    inputFileReducer: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
-  };*/
+  };
 
   componentDidMount() {
-    const { dispatch, selectedSubreddit } = this.props;
-    dispatch(fetchPosts(selectedSubreddit));
+    const { dispatch, inputFileReducer } = this.props;
+    dispatch(fetchPosts(inputFileReducer));
   }
+
+  onInputTextChange = e => {
+    debugger;
+  };
 
   render() {
     return (
@@ -36,7 +36,11 @@ class App extends Component {
           </a>
         </header>
         <div className="app-content">
-          <RoomSpec />
+          <RoomSpec
+            value="Loading content..."
+            disabled={true}
+            onChange={this.onInputTextChange}
+          />
           <RoomViz />
           <ResultOutput />
         </div>
@@ -45,8 +49,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
+const mapStateToProps = state => ({
+  inputFileReducer: state.inputFileReducer
+});
 
 export default connect(mapStateToProps)(App);

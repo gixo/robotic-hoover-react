@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
-class RoomSpec extends Component {
-  render() {
-    return <textarea />;
-  }
-}
+const RoomSpec = ({ value, onChange, disabled }) => (
+  <textarea disabled={disabled} onChange={onChange} value={value} />
+);
+
+RoomSpec.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
+};
 
 export default RoomSpec;
