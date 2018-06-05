@@ -6,9 +6,9 @@ const RoomSpec = ({ inputTextValue, onChange, disabled }) => (
 );
 
 RoomSpec.propTypes = {
-  //  inputTextValue: PropTypes.string.isRequired,
-  //  onChange: PropTypes.func.isRequired,
-  //  disabled: PropTypes.bool.isRequired
+  inputTextValue: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default RoomSpec;

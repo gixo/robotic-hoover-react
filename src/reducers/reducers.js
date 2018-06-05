@@ -5,7 +5,11 @@ const roomConfiguration = (
   state = {
     inputFileName: "input.txt",
     isFetching: true,
-    inputTextValue: "Loading..."
+    inputTextValue: "Loading...",
+    roomSize: [10, 10],
+    dirtPatches: [],
+    robotLocation: [0, 0],
+    directions: []
   },
   action
 ) => {

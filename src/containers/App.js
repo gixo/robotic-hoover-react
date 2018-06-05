@@ -45,7 +45,12 @@ class App extends Component {
             disabled={isFetching}
             onChange={event => this.onInputTextChange(event)}
           />
-          <RoomViz />
+          <RoomViz
+            roomSize={this.props.roomSize}
+            dirtPatches={this.props.dirtPatches}
+            robotLocation={this.props.robotLocation}
+            directions={this.props.robotLocation}
+          />
           <ResultOutput />
         </div>
       </div>
@@ -56,7 +61,11 @@ class App extends Component {
 const mapStateToProps = state => ({
   inputFileName: state.roomConfiguration.inputFileName,
   inputTextValue: state.roomConfiguration.inputTextValue,
-  isFetching: state.roomConfiguration.isFetching
+  isFetching: state.roomConfiguration.isFetching,
+  roomSize: state.roomConfiguration.roomSize,
+  dirtPatches: state.roomConfiguration.dirtPatches,
+  robotLocation: state.roomConfiguration.robotLocation,
+  directions: state.roomConfiguration.directions
 });
 
 export default connect(mapStateToProps)(App);

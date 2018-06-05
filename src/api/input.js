@@ -7,12 +7,12 @@ const parseInput = textinput => {
   const inputLines = textinput.split("\n");
 
   const state = {
-    roomSize: inputLines[0].split(" "),
+    roomSize: inputLines[0].trim().split(" "),
     initialRobotPosition: inputLines[1].split(" "),
     directions: inputLines[inputLines.length - 1],
     dirtPatches: inputLines
       .slice(2, inputLines.length - 1)
-      .map(line => line.split(" "))
+      .map(line => line.trim().split(" "))
   };
 
   return state;
