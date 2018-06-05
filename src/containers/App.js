@@ -11,6 +11,7 @@ import "./App.css";
 class App extends Component {
   static propTypes = {
     inputFileName: PropTypes.string.isRequired,
+    inputTextValue: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
   };
 
@@ -52,8 +53,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  inputTextValue: state.inputTextValue,
-  isFetching: state.isFetching
+  inputFileName: state.roomConfiguration.inputFileName,
+  inputTextValue: state.roomConfiguration.inputTextValue,
+  isFetching: state.roomConfiguration.isFetching
 });
 
 export default connect(mapStateToProps)(App);

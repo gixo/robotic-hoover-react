@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const RoomSpec = ({ textValue, onChange, disabled }) => (
-  <textarea disabled={disabled} onChange={onChange} value={textValue} />
+const RoomSpec = ({ inputTextValue, onChange, disabled }) => (
+  <textarea disabled={disabled} onChange={onChange} value={inputTextValue} />
 );
 
 RoomSpec.propTypes = {
-  textValue: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  disabled: PropTypes.bool.isRequired
+  //  inputTextValue: PropTypes.string.isRequired,
+  //  onChange: PropTypes.func.isRequired,
+  //  disabled: PropTypes.bool.isRequired
 };
 
 export default RoomSpec;

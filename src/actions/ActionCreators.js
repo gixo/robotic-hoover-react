@@ -6,9 +6,8 @@ export const requestInputFileAction = inputFileName => ({
   isFetching: true
 });
 
-export const receiveInputFileAction = (inputText, roomConfig) => ({
+export const receiveInputFileAction = (inputTextValue, roomConfig) => ({
   type: types.RECEIVE_INPUT_FILE,
-  inputText,
   roomConfig,
-  isFetching: false
+  inputTextValue
 });

@@ -15,8 +15,12 @@ const roomConfiguration = (
     case types.RECEIVE_INPUT_FILE:
       return {
         ...state,
-        inputText: action.inputText,
-        roomConfig: action.roomConfig
+        inputTextValue: action.inputTextValue,
+        roomSize: action.roomConfig.roomSize,
+        initialRobotPosition: action.roomConfig.initialRobotPosition,
+        directions: action.roomConfig.directions,
+        dirtPatches: action.roomConfig.dirtPatches,
+        isFetching: false
       };
     default:
       return state;

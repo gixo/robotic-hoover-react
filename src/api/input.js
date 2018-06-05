@@ -22,12 +22,16 @@ const parseInput = textinput => {
 // is added to the mounted to the DOM
 export const fetchPosts = inputFileURL => dispatch => {
   dispatch(requestInputFileAction(inputFileURL));
-  return fetch(inputFileURL)
-    .then(function(response) {
-      if (!response.ok) throw Error(response.statusText);
-      response.text().then(function(data) {
-        dispatch(receiveInputFileAction(data, parseInput(data)));
-      });
-    })
-    .catch(error => console.log(error));
+
+  //Adds a mock delay to simulate network activity
+  setTimeout(function() {
+    return fetch(inputFileURL)
+      .then(function(response) {
+        if (!response.ok) throw Error(response.statusText);
+        response.text().then(function(data) {
+          dispatch(receiveInputFileAction(data, parseInput(data)));
+        });
+      })
+      .catch(error => console.log(error));
+  }, 500);
 };
