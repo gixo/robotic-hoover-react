@@ -11,3 +11,8 @@ export const receiveInputFileAction = (inputTextValue, roomConfig) => ({
   roomConfig,
   inputTextValue
 });
+
+export const inputTextAreaUpdated = newInputTextValue => ({
+  type: types.INPUT_TEXT_AREA_UPDATED,
+  newInputTextValue
+});

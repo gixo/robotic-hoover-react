@@ -7,6 +7,7 @@ import { fetchPosts } from "../api/input";
 import PropTypes from "prop-types";
 
 import "./App.css";
+import { inputTextAreaUpdated } from "../actions/ActionCreators";
 
 class App extends Component {
   static propTypes = {
@@ -20,8 +21,8 @@ class App extends Component {
     dispatch(fetchPosts(inputFileName));
   }
 
-  onInputTextChange = e => {
-    debugger;
+  onInputTextChange = event => {
+    this.props.dispatch(inputTextAreaUpdated(event.target.value));
   };
 
   render() {
@@ -42,7 +43,7 @@ class App extends Component {
           <RoomSpec
             inputTextValue={inputTextValue}
             disabled={isFetching}
-            onChange={this.onInputTextChange}
+            onChange={event => this.onInputTextChange(event)}
           />
           <RoomViz />
           <ResultOutput />

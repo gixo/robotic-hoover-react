@@ -22,6 +22,11 @@ const roomConfiguration = (
         dirtPatches: action.roomConfig.dirtPatches,
         isFetching: false
       };
+    case types.INPUT_TEXT_AREA_UPDATED:
+      return {
+        ...state,
+        inputTextValue: action.newInputTextValue
+      };
     default:
       return state;
   }
