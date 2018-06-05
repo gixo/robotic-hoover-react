@@ -6,7 +6,7 @@ import "./RoomViz.css";
 const RoomViz = ({
   roomSize = [],
   dirtPatches = [],
-  robotLocation = [],
+  initialRobotPosition = [],
   directions = [],
   isInputValid = true
 }) => (
@@ -28,6 +28,15 @@ const RoomViz = ({
             fill="green"
           />
         ))}
+      </g>
+      <g>
+        <rect
+          x={+initialRobotPosition[0]}
+          y={-initialRobotPosition[1]}
+          height="1"
+          width="1"
+          fill="black"
+        />
       </g>
     </svg>
   </div>

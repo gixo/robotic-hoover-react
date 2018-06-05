@@ -47,7 +47,7 @@ class App extends Component {
             <RoomViz
               roomSize={this.props.roomSize}
               dirtPatches={this.props.dirtPatches}
-              robotLocation={this.props.robotLocation}
+              initialRobotPosition={this.props.initialRobotPosition}
               directions={this.props.robotLocation}
               isInputValid={this.props.isInputValid}
             />
@@ -65,7 +65,7 @@ const mapStateToProps = state => ({
   isFetching: state.roomConfiguration.isFetching,
   roomSize: state.roomConfiguration.roomSize,
   dirtPatches: state.roomConfiguration.dirtPatches,
-  robotLocation: state.roomConfiguration.robotLocation,
+  initialRobotPosition: state.roomConfiguration.initialRobotPosition,
   directions: state.roomConfiguration.directions,
   isInputValid: state.roomConfiguration.isInputValid
 });

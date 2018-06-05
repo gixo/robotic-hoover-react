@@ -8,7 +8,7 @@ const roomConfiguration = (
     inputTextValue: "Loading...",
     roomSize: [10, 10],
     dirtPatches: [],
-    robotLocation: [0, 0],
+    initialRobotPosition: [0, 0],
     directions: [],
     isInputValid: true
   },
