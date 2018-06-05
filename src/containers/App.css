@@ -32,11 +32,3 @@
 .app-content textarea {
   height: 100px;
 }
-
-.app-content svg {
-  width: 135px;
-  display: inline-block;
-  margin: 0 20px;
-  background-color: gainsboro;
-  border: 1px solid darkgray;
-}

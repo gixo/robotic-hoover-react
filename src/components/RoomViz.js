@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "./RoomViz.css";
+
 const RoomViz = ({
   roomSize = [],
   dirtPatches = [],

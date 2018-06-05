@@ -29,7 +29,11 @@ const roomConfiguration = (
     case types.INPUT_TEXT_AREA_UPDATED:
       return {
         ...state,
-        inputTextValue: action.newInputTextValue
+        inputTextValue: action.newInputTextValue,
+        roomSize: action.newRoomState.roomSize,
+        initialRobotPosition: action.newRoomState.initialRobotPosition,
+        directions: action.newRoomState.directions,
+        dirtPatches: action.newRoomState.dirtPatches
       };
     default:
       return state;

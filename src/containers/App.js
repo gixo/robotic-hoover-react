@@ -3,11 +3,11 @@ import RoomSpec from "../components/RoomSpec";
 import RoomViz from "../components/RoomViz";
 import ResultOutput from "../components/ResultOutput";
 import { connect } from "react-redux";
-import { fetchPosts } from "../api/input";
+import { fetchPosts } from "../actions/ActionCreators";
 import PropTypes from "prop-types";
 
 import "./App.css";
-import { inputTextAreaUpdated } from "../actions/ActionCreators";
+import { parseStateFromText } from "../actions/ActionCreators";
 
 class App extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   onInputTextChange = event => {
-    this.props.dispatch(inputTextAreaUpdated(event.target.value));
+    this.props.dispatch(parseStateFromText(event.target.value));
   };
 
   render() {
