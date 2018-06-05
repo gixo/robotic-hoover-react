@@ -16,6 +16,10 @@
   margin-top: 20px;
 }
 
+.app-content > div {
+  display: inline-block;
+}
+
 #back-to-code {
   position: absolute;
   top: 0;
@@ -30,11 +34,12 @@
 }
 
 .app-content textarea {
-  height: 131px;
+  height: 196px;
 }
 
 .data-viz {
   display: inline-block;
   width: 200px;
-  height: 152px;
+  height: 200px;
+  margin: 0px 30px;
 }
