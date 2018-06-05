@@ -10,13 +10,13 @@ import "./App.css";
 
 class App extends Component {
   static propTypes = {
-    inputFileReducer: PropTypes.string.isRequired,
+    inputFileName: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    const { dispatch, inputFileReducer } = this.props;
-    dispatch(fetchPosts(inputFileReducer));
+    const { dispatch, inputFileName } = this.props;
+    dispatch(fetchPosts(inputFileName));
   }
 
   onInputTextChange = e => {
@@ -24,6 +24,8 @@ class App extends Component {
   };
 
   render() {
+    const { inputTextValue, isFetching } = this.props;
+
     return (
       <div className="app">
         <header className="app-header">
@@ -37,8 +39,8 @@ class App extends Component {
         </header>
         <div className="app-content">
           <RoomSpec
-            value="Loading content..."
-            disabled={true}
+            inputTextValue={inputTextValue}
+            disabled={isFetching}
             onChange={this.onInputTextChange}
           />
           <RoomViz />
@@ -50,7 +52,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  inputFileReducer: state.inputFileReducer
+  inputTextValue: state.inputTextValue,
+  isFetching: state.isFetching
 });
 
 export default connect(mapStateToProps)(App);

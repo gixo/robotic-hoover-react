@@ -1,4 +1,7 @@
-import { requestInputFileAction, receiveInputFileAction } from "../actions";
+import {
+  requestInputFileAction,
+  receiveInputFileAction
+} from "../actions/ActionCreators";
 
 const parseInput = textinput => {
   const inputLines = textinput.split("\n");
@@ -23,7 +26,7 @@ export const fetchPosts = inputFileURL => dispatch => {
     .then(function(response) {
       if (!response.ok) throw Error(response.statusText);
       response.text().then(function(data) {
-        dispatch(receiveInputFileAction(inputFileURL, parseInput(data)));
+        dispatch(receiveInputFileAction(data, parseInput(data)));
       });
     })
     .catch(error => console.log(error));

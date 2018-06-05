@@ -2,10 +2,13 @@ import * as types from "./ActionTypes";
 
 export const requestInputFileAction = inputFileName => ({
   type: types.REQUEST_INPUT_FILE,
-  inputFileName
+  inputFileName,
+  isFetching: true
 });
 
-export const receiveInputFileAction = (subreddit, state) => ({
+export const receiveInputFileAction = (inputText, roomConfig) => ({
   type: types.RECEIVE_INPUT_FILE,
-  roomstate: state
+  inputText,
+  roomConfig,
+  isFetching: false
 });
