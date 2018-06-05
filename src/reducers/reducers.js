@@ -9,7 +9,8 @@ const roomConfiguration = (
     roomSize: [10, 10],
     dirtPatches: [],
     robotLocation: [0, 0],
-    directions: []
+    directions: [],
+    isInputValid: true
   },
   action
 ) => {
@@ -19,21 +20,26 @@ const roomConfiguration = (
     case types.RECEIVE_INPUT_FILE:
       return {
         ...state,
-        inputTextValue: action.inputTextValue,
-        roomSize: action.roomConfig.roomSize,
-        initialRobotPosition: action.roomConfig.initialRobotPosition,
-        directions: action.roomConfig.directions,
-        dirtPatches: action.roomConfig.dirtPatches,
         isFetching: false
       };
     case types.INPUT_TEXT_AREA_UPDATED:
       return {
         ...state,
-        inputTextValue: action.newInputTextValue,
+        inputTextValue: action.newInputTextValue
+      };
+    case types.INCORRECT_INPUT_PASSED:
+      return {
+        ...state,
+        isInputValid: false
+      };
+    case types.ROOM_SPEC_UPDATED:
+      return {
+        ...state,
         roomSize: action.newRoomState.roomSize,
         initialRobotPosition: action.newRoomState.initialRobotPosition,
         directions: action.newRoomState.directions,
-        dirtPatches: action.newRoomState.dirtPatches
+        dirtPatches: action.newRoomState.dirtPatches,
+        isInputValid: action.newRoomState.isInputValid
       };
     default:
       return state;

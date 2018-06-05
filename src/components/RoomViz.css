@@ -2,6 +2,9 @@ svg {
   width: 135px;
   display: inline-block;
   margin: 0 20px;
-  background-color: gainsboro;
+  background-color: #f7f7f7;
   border: 1px solid darkgray;
+}
+svg.error {
+  background-color: pink;
 }

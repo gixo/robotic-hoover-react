@@ -3,7 +3,7 @@ import RoomSpec from "../components/RoomSpec";
 import RoomViz from "../components/RoomViz";
 import ResultOutput from "../components/ResultOutput";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions/ActionCreators";
+import { fetchInputFile } from "../actions/ActionCreators";
 import PropTypes from "prop-types";
 
 import "./App.css";
@@ -18,7 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     const { dispatch, inputFileName } = this.props;
-    dispatch(fetchPosts(inputFileName));
+    dispatch(fetchInputFile(inputFileName));
   }
 
   onInputTextChange = event => {
@@ -26,8 +26,6 @@ class App extends Component {
   };
 
   render() {
-    const { inputTextValue, isFetching } = this.props;
-
     return (
       <div className="app">
         <header className="app-header">
@@ -41,16 +39,19 @@ class App extends Component {
         </header>
         <div className="app-content">
           <RoomSpec
-            inputTextValue={inputTextValue}
-            disabled={isFetching}
+            inputTextValue={this.props.inputTextValue}
+            disabled={this.props.isFetching}
             onChange={event => this.onInputTextChange(event)}
           />
-          <RoomViz
-            roomSize={this.props.roomSize}
-            dirtPatches={this.props.dirtPatches}
-            robotLocation={this.props.robotLocation}
-            directions={this.props.robotLocation}
-          />
+          <div className="data-viz">
+            <RoomViz
+              roomSize={this.props.roomSize}
+              dirtPatches={this.props.dirtPatches}
+              robotLocation={this.props.robotLocation}
+              directions={this.props.robotLocation}
+              isInputValid={this.props.isInputValid}
+            />
+          </div>
           <ResultOutput />
         </div>
       </div>
@@ -65,7 +66,8 @@ const mapStateToProps = state => ({
   roomSize: state.roomConfiguration.roomSize,
   dirtPatches: state.roomConfiguration.dirtPatches,
   robotLocation: state.roomConfiguration.robotLocation,
-  directions: state.roomConfiguration.directions
+  directions: state.roomConfiguration.directions,
+  isInputValid: state.roomConfiguration.isInputValid
 });
 
 export default connect(mapStateToProps)(App);

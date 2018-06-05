@@ -30,5 +30,11 @@
 }
 
 .app-content textarea {
-  height: 100px;
+  height: 131px;
+}
+
+.data-viz {
+  display: inline-block;
+  width: 200px;
+  height: 152px;
 }

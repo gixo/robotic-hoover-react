@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 
 import "./RoomViz.css";
 
@@ -7,9 +7,11 @@ const RoomViz = ({
   roomSize = [],
   dirtPatches = [],
   robotLocation = [],
-  directions = []
+  directions = [],
+  isInputValid = true
 }) => (
   <svg
+    className={isInputValid ? "valid" : "error"}
     viewBox={[0, 1 - roomSize[0], roomSize[1], roomSize[0]]}
     preserveAspectRatio="none"
   >
