@@ -52,15 +52,23 @@ export const setRobotCoordinates = robotPosition => ({
   robotPosition
 });
 
-export const robotNavigationStepCompleted = (robotPosition, directions) => ({
-  type: types.ROBOT_NAVIGATION_STEP_COMPLETED,
-  robotPosition,
+export const robotNavStepCompleted = (robotPos, directions) => ({
+  type: types.ROBOT_NAV_STEP_COMPLETED,
+  robotPosition: robotPos,
   directions
 });
 
-export const parseStateFromText = newInputTextValue => dispatch => {
+export const robotAnimStarted = timeoutID => ({
+  type: types.ROBOT_ANIM_STARTED,
+  timeoutID
+});
+
+export const parseStateFromText = newInputTextValue => (dispatch, getState) => {
   const newRoomState = parseInput(newInputTextValue);
   dispatch(inputTextAreaUpdated(newInputTextValue));
+  const timeoutID = getState().robotConfiguration.timeoutID;
+  clearTimeout(timeoutID);
+
   if (newRoomState.isInputValid) {
     dispatch(roomSpecUpdated(newRoomState));
     dispatch(robotSpecUpdated(newRoomState));
@@ -71,27 +79,29 @@ export const parseStateFromText = newInputTextValue => dispatch => {
 const animateSolvSeq = () => (dispatch, getState) => {
   const currentState = getState();
   const currentDirections = currentState.robotConfiguration.directions;
-  setTimeout(function() {
+  const timeoutID = setTimeout(function() {
     if (currentDirections.length > 0) {
       const nextDirection = currentDirections[0];
       switch (nextDirection) {
         case "N":
-          dispatch(triggerNavigationNorth());
+          dispatch(triggerNavNorth());
           break;
         case "S":
-          dispatch(triggerNavigationSouth());
+          dispatch(triggerNavSouth());
           break;
         case "W":
-          dispatch(triggerNavigationWest());
+          dispatch(triggerNavWest());
           break;
         case "E":
-          dispatch(triggerNavigationEast());
+          dispatch(triggerNavEast());
           break;
         default:
       }
       dispatch(animateSolvSeq());
     }
   }, 500);
+
+  dispatch(robotAnimStarted(timeoutID));
 };
 
 const parseInput = textinput => {
@@ -157,10 +167,10 @@ const moveRobot = applyRobotMovement => (dispatch, getState) => {
     dispatch(setRobotCoordinates([robX, robY]));
     dispatch(removeDirtPatch([robX, robY]));
   }
-  dispatch(robotNavigationStepCompleted([robX, robY], directions));
+  dispatch(robotNavStepCompleted([robX, robY], directions));
 };
 
-export const triggerNavigationNorth = () => moveRobot(moveNorth);
-export const triggerNavigationSouth = () => moveRobot(moveSouth);
-export const triggerNavigationWest = () => moveRobot(moveWest);
-export const triggerNavigationEast = () => moveRobot(moveEast);
+export const triggerNavNorth = () => moveRobot(moveNorth);
+export const triggerNavSouth = () => moveRobot(moveSouth);
+export const triggerNavWest = () => moveRobot(moveWest);
+export const triggerNavEast = () => moveRobot(moveEast);
