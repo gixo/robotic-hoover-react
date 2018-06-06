@@ -52,9 +52,8 @@ export const setRobotCoordinates = robotPosition => ({
   robotPosition
 });
 
-export const robotNavStepCompleted = (robotPos, directions) => ({
+export const robotNavStepCompleted = directions => ({
   type: types.ROBOT_NAV_STEP_COMPLETED,
-  robotPosition: robotPos,
   directions
 });
 
@@ -167,7 +166,7 @@ const moveRobot = applyRobotMovement => (dispatch, getState) => {
     dispatch(setRobotCoordinates([robX, robY]));
     dispatch(removeDirtPatch([robX, robY]));
   }
-  dispatch(robotNavStepCompleted([robX, robY], directions));
+  dispatch(robotNavStepCompleted(directions));
 };
 
 export const triggerNavNorth = () => moveRobot(moveNorth);

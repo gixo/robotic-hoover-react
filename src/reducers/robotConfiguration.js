@@ -15,7 +15,6 @@ const robotConfiguration = (state = initialState, action) => {
     case types.ROBOT_NAV_STEP_COMPLETED:
       return {
         ...state,
-        robotPosition: action.robotPosition,
         directions: action.directions.slice(1),
         timeoutID: action.timeoutID
       };
@@ -33,18 +32,17 @@ const robotConfiguration = (state = initialState, action) => {
         directions: action.newRoomState.directions
       };
     case types.REMOVE_DIRT_PATCH:
-      /*// Find index to remove
-      const ix = dirtIndex(state, action);
-      if (ix > -1) {
-        state = { locations: state.locations.slice(), removed: state.removed };
-        state.locations.splice(ix, 1);
-        // In setup stage we don't want to increase the removed count
-        // whereas in play mode we do
-        if (action.count) {
-          state.removed++;
-        }
-      }*/
-      return state;
+      const robotLoc = action.robotLocation;
+      const dirtPatchesLocations = state.dirtPatchesLocations;
+      const newDirtPatches = dirtPatchesLocations.filter(
+        patch => !(patch[0] === robotLoc[0] && patch[1] === robotLoc[1])
+      );
+
+      return {
+        ...state,
+        dirtPatchesLocations: newDirtPatches,
+        removedDirtPatchesCount: state.removedDirtPatchesCount + 1
+      };
     default:
       return state;
   }
