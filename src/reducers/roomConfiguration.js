@@ -5,7 +5,6 @@ const initialState = {
   isFetching: true,
   inputTextValue: "Loading...",
   roomSize: [],
-  directions: [],
   isInputValid: true
 };
 
@@ -32,7 +31,6 @@ const roomConfiguration = (state = initialState, action) => {
       return {
         ...state,
         roomSize: action.newRoomState.roomSize,
-        directions: action.newRoomState.directions,
         isInputValid: action.newRoomState.isInputValid
       };
     default:

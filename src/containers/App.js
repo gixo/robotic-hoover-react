@@ -66,7 +66,7 @@ const mapStateToProps = state => ({
   roomSize: state.roomConfiguration.roomSize,
   dirtPatches: state.robotConfiguration.dirtPatchesLocations,
   robotPosition: state.robotConfiguration.robotPosition,
-  directions: state.roomConfiguration.directions,
+  directions: state.robotConfiguration.directions,
   isInputValid: state.roomConfiguration.isInputValid
 });
 

@@ -52,9 +52,10 @@ export const setRobotCoordinates = robotPosition => ({
   robotPosition
 });
 
-export const robotPositionUpdated = robotPosition => ({
-  type: types.SET_ROBOT_COORDINATES,
-  robotPosition
+export const robotNavigationStepCompleted = (robotPosition, directions) => ({
+  type: types.ROBOT_NAVIGATION_STEP_COMPLETED,
+  robotPosition,
+  directions
 });
 
 export const parseStateFromText = newInputTextValue => dispatch => {
@@ -63,19 +64,16 @@ export const parseStateFromText = newInputTextValue => dispatch => {
   if (newRoomState.isInputValid) {
     dispatch(roomSpecUpdated(newRoomState));
     dispatch(robotSpecUpdated(newRoomState));
-    dispatch(
-      animateSolvingSequence(
-        newRoomState.robotPosition,
-        newRoomState.directions
-      )
-    );
+    dispatch(animateSolvSeq());
   } else dispatch(incorrectInputPassed(false));
 };
 
-const animateSolvingSequence = (robotPosition, directions) => dispatch => {
-  const timeoutID = setTimeout(function() {
-    if (directions.length > 0) {
-      const nextDirection = directions[0];
+const animateSolvSeq = () => (dispatch, getState) => {
+  const currentState = getState();
+  const currentDirections = currentState.robotConfiguration.directions;
+  setTimeout(function() {
+    if (currentDirections.length > 0) {
+      const nextDirection = currentDirections[0];
       switch (nextDirection) {
         case "N":
           dispatch(triggerNavigationNorth());
@@ -91,8 +89,9 @@ const animateSolvingSequence = (robotPosition, directions) => dispatch => {
           break;
         default:
       }
+      dispatch(animateSolvSeq());
     }
-  }, 1000);
+  }, 500);
 };
 
 const parseInput = textinput => {
@@ -150,6 +149,7 @@ const moveRobot = applyRobotMovement => (dispatch, getState) => {
   const currentState = getState();
   const roomSize = currentState.roomConfiguration.roomSize;
   const robotPosition = currentState.robotConfiguration.robotPosition;
+  const directions = currentState.robotConfiguration.directions;
 
   const [robX, robY] = applyRobotMovement(robotPosition);
 
@@ -157,7 +157,7 @@ const moveRobot = applyRobotMovement => (dispatch, getState) => {
     dispatch(setRobotCoordinates([robX, robY]));
     dispatch(removeDirtPatch([robX, robY]));
   }
-  dispatch(robotPositionUpdated([robX, robY]));
+  dispatch(robotNavigationStepCompleted([robX, robY], directions));
 };
 
 export const triggerNavigationNorth = () => moveRobot(moveNorth);
