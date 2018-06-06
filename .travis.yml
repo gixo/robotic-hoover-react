@@ -7,10 +7,6 @@ install:
   - npm i -g npm@6.1
   - npm install -g codecov
 
-cache:
-  directories:
-    - node_modules
-
 script:
   - npm run lint
   - npm test
@@ -27,4 +23,4 @@ deploy:
   keep-history: true
   local_dir: build
   on:
-    branch: master
+    branch: develop
