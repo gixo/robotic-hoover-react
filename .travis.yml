@@ -8,13 +8,18 @@ install:
   - npm install -g codecov
   - npm ci
 
+cache:
+  directories:
+    - node_modules
+
 script:
   - npm run lint
   - npm test
-
-after_success:
   - npm run coverage
   - codecov --token=$CODECOV_TOKEN
+
+after_success:
+  - npm run build
 
 deploy:
   provider: pages
