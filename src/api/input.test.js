@@ -1,4 +1,4 @@
-import configureStore from "redux-mock-store";
+//import configureStore from "redux-mock-store";
 import configureMockStore from "redux-mock-store";
 import { fetchPosts } from "./input";
 import thunk from "redux-thunk";

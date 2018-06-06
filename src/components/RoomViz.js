@@ -4,9 +4,9 @@ import React from "react";
 import "./RoomViz.css";
 
 const RoomViz = ({
-  roomSize = [],
+  roomSize = [5, 5],
   dirtPatches = [],
-  initialRobotPosition = [],
+  robotPosition = [0, 0],
   directions = [],
   isInputValid = true
 }) => (
@@ -31,8 +31,8 @@ const RoomViz = ({
       </g>
       <g>
         <rect
-          x={+initialRobotPosition[0]}
-          y={-initialRobotPosition[1]}
+          x={+robotPosition[0]}
+          y={-robotPosition[1]}
           height="1"
           width="1"
           fill="black"

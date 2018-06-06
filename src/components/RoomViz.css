@@ -1,9 +1,9 @@
 svg {
-  max-width: 200px;
+  width: 200px;
   display: inline-block;
   background-color: #f7f7f7;
   border: 1px solid darkgray;
-  max-height: 200px;
+  height: 200px;
 }
 svg.error {
   background-color: pink;
