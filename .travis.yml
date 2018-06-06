@@ -1,21 +1,24 @@
 language: node_js
 
 node_js:
-  - "node"
+  - 8
 
 install:
-  - npm i -g npm
-  - npm ci
+  - npm install -g codecov
 
 script:
   - npm run lint
   - npm test
 
+after_success:
+  - npm run coverage
+  - codecov --token=$CODECOV_TOKEN
+
 deploy:
   provider: pages
-  skip-cleanup: true
+  skip-cleanup: false
   github-token: $GITHUB_TOKEN
   keep-history: true
   local_dir: build
   on:
-    branch: develop
+    branch: test-deploy
