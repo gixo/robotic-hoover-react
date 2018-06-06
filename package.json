@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "coverage": "npm test -- --coverage",
+    "coverage": "npm test -- --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/*",
     "lint": "eslint src test"
   },
   "devDependencies": {
