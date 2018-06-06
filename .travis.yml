@@ -1,13 +1,24 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - "node"
 
 install:
+  - npm i -g npm@6.1
   - npm install -g codecov
+  - npm ci
+
+cache:
+  directories:
+    - node_modules
 
 script:
+  - npm run lint
   - npm test
+  - npm run coverage
+  - codecov --token=$CODECOV_TOKEN
+
+after_success:
   - npm run build
 
 deploy:
