@@ -7,7 +7,6 @@ install:
   - npm install -g codecov
 
 script:
-  - npm run lint
   - npm test
 
 after_success:

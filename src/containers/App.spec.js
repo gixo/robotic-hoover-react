@@ -38,7 +38,7 @@ describe("components", () => {
     });
 
     it("Should render RoomSpec and RoomViz", () => {
-      const { enzymeWrapper, props } = setup();
+      const { enzymeWrapper } = setup();
       const roomSpecProps = enzymeWrapper.find("RoomSpec").props();
       const roomVizProps = enzymeWrapper.find("RoomViz").props();
       expect(roomSpecProps.disabled).toBe(true);
