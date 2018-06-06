@@ -8,3 +8,10 @@ svg {
 svg.error {
   background-color: pink;
 }
+svg.complete {
+  background-color: #e2ffe2;
+}
+
+svg rect {
+  transition: all 0.1s ease;
+}

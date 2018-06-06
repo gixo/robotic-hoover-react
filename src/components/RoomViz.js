@@ -8,24 +8,28 @@ const RoomViz = ({
   dirtPatches = [],
   robotPosition = [0, 0],
   directions = [],
-  isInputValid = true
+  isInputValid = true,
+  hasCompletedAnimation = false
 }) => (
   <div>
     <p>Room visualization</p>
     <svg
-      className={isInputValid ? "valid" : "error"}
+      className={
+        isInputValid ? (hasCompletedAnimation ? "complete" : "valid") : "error"
+      }
       viewBox={[0, 1 - roomSize[0], roomSize[1], roomSize[0]]}
       preserveAspectRatio="none"
     >
       <g>
         {dirtPatches.map(([x, y]) => (
-          <rect
+          <circle
             key={x + "-" + y}
-            x={+x}
-            y={-y}
-            height="1"
-            width="1"
-            fill="green"
+            cx={+x + 0.5}
+            cy={-y + 0.5}
+            r="0.5"
+            fill="#902222"
+            stroke="#711e1e"
+            stroke-width="0.05"
           />
         ))}
       </g>
@@ -35,7 +39,11 @@ const RoomViz = ({
           y={-robotPosition[1]}
           height="1"
           width="1"
-          fill="black"
+          fill="#44446f"
+          rx="0.2"
+          ry="0.2"
+          stroke="#2f2f69"
+          stroke-width="0.05"
         />
       </g>
     </svg>

@@ -50,9 +50,13 @@ class App extends Component {
               robotPosition={this.props.robotPosition}
               directions={this.props.robotLocation}
               isInputValid={this.props.isInputValid}
+              hasCompletedAnimation={this.props.hasCompletedAnimation}
             />
           </div>
-          <ResultOutput />
+          <ResultOutput
+            robotPosition={this.props.robotPosition}
+            removedDirtPatchesCount={this.props.removedDirtPatchesCount}
+          />
         </div>
       </div>
     );
@@ -67,7 +71,9 @@ const mapStateToProps = state => ({
   dirtPatches: state.robotConfiguration.dirtPatchesLocations,
   robotPosition: state.robotConfiguration.robotPosition,
   directions: state.robotConfiguration.directions,
-  isInputValid: state.roomConfiguration.isInputValid
+  isInputValid: state.roomConfiguration.isInputValid,
+  hasCompletedAnimation: state.robotConfiguration.hasCompletedAnimation,
+  removedDirtPatchesCount: state.robotConfiguration.removedDirtPatchesCount
 });
 
 export default connect(mapStateToProps)(App);

@@ -62,6 +62,10 @@ export const robotAnimStarted = timeoutID => ({
   timeoutID
 });
 
+export const robotAnimEnded = () => ({
+  type: types.ROBOT_ANIM_ENDED
+});
+
 export const parseStateFromText = newInputTextValue => (dispatch, getState) => {
   const newRoomState = parseInput(newInputTextValue);
   dispatch(inputTextAreaUpdated(newInputTextValue));
@@ -97,6 +101,10 @@ const animateSolvSeq = () => (dispatch, getState) => {
         default:
       }
       dispatch(animateSolvSeq());
+    } else {
+      dispatch(robotAnimEnded());
+      console.log(currentState.robotConfiguration.robotPosition.join(" "));
+      console.log(currentState.robotConfiguration.removedDirtPatchesCount);
     }
   }, 500);
 

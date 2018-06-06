@@ -5,7 +5,8 @@ const initialState = {
   dirtPatchesLocations: [],
   robotPosition: [],
   directions: [],
-  timeoutID: 0
+  timeoutID: 0,
+  hasCompletedAnimation: false
 };
 
 const robotConfiguration = (state = initialState, action) => {
@@ -21,7 +22,13 @@ const robotConfiguration = (state = initialState, action) => {
     case types.ROBOT_ANIM_STARTED:
       return {
         ...state,
-        timeoutID: action.timeoutID
+        timeoutID: action.timeoutID,
+        hasCompletedAnimation: false
+      };
+    case types.ROBOT_ANIM_ENDED:
+      return {
+        ...state,
+        hasCompletedAnimation: true
       };
     case types.ROBOT_SPEC_UPDATED:
       return {
@@ -38,10 +45,13 @@ const robotConfiguration = (state = initialState, action) => {
         patch => !(patch[0] === robotLoc[0] && patch[1] === robotLoc[1])
       );
 
+      if (newDirtPatches.length !== dirtPatchesLocations.length)
+        state.removedDirtPatchesCount++;
+
       return {
         ...state,
         dirtPatchesLocations: newDirtPatches,
-        removedDirtPatchesCount: state.removedDirtPatchesCount + 1
+        removedDirtPatchesCount: state.removedDirtPatchesCount
       };
     default:
       return state;

@@ -1,14 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class RoomOutput extends Component {
-  render() {
-    return (
-      <div>
-        <p>Result</p>
-        <textarea />
-      </div>
-    );
-  }
-}
+const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
+  <div>
+    <p>Result</p>
+    <textarea
+      disabled="true"
+      value={
+        "Robot Position: " +
+        robotPosition +
+        "\nRemove Count:" +
+        removedDirtPatchesCount
+      }
+    />
+  </div>
+);
 
 export default RoomOutput;
