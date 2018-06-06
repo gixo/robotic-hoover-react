@@ -6,6 +6,7 @@ node_js:
 install:
   - npm i -g npm@6.1
   - npm install -g codecov
+  - npm ci
 
 script:
   - npm run lint
