@@ -1,4 +1,4 @@
-import * as types from "./ActionTypes";
+import * as types from "../../src/actions/ActionTypes";
 
 describe("Action Types", () => {
   test("Action types have all different values", () => {

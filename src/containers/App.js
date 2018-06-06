@@ -10,12 +10,6 @@ import "./App.css";
 import { parseStateFromText } from "../actions/ActionCreators";
 
 class App extends Component {
-  static propTypes = {
-    inputFileName: PropTypes.string.isRequired,
-    inputTextValue: PropTypes.string.isRequired,
-    dispatch: PropTypes.func.isRequired
-  };
-
   componentDidMount() {
     const { dispatch, inputFileName } = this.props;
     dispatch(fetchInputFile(inputFileName));
@@ -43,7 +37,9 @@ class App extends Component {
             disabled={this.props.isFetching}
             onChange={event => this.onInputTextChange(event)}
           />
-          <div className="data-viz">
+          <div
+            className={"data-viz" + (this.props.isFetching ? " fetching" : "")}
+          >
             <RoomViz
               roomSize={this.props.roomSize}
               dirtPatches={this.props.dirtPatches}
@@ -61,6 +57,22 @@ class App extends Component {
       </div>
     );
   }
+
+  static propTypes = {
+    inputFileName: PropTypes.string.isRequired,
+    inputTextValue: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    roomSize: PropTypes.arrayOf(PropTypes.number.isRequired),
+    dirtPatches: PropTypes.arrayOf(
+      PropTypes.arrayOf(PropTypes.number.isRequired)
+    ),
+    robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
+    directions: PropTypes.arrayOf(PropTypes.string),
+    isInputValid: PropTypes.bool.isRequired,
+    hasCompletedAnimation: PropTypes.bool.isRequired,
+    removedDirtPatchesCount: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
 }
 
 const mapStateToProps = state => ({

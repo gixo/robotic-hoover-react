@@ -1,5 +1,5 @@
 import React from "react";
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import "./RoomViz.css";
 
@@ -29,7 +29,7 @@ const RoomViz = ({
             r="0.5"
             fill="#902222"
             stroke="#711e1e"
-            stroke-width="0.05"
+            strokeWidth="0.05"
           />
         ))}
       </g>
@@ -43,20 +43,20 @@ const RoomViz = ({
           rx="0.2"
           ry="0.2"
           stroke="#2f2f69"
-          stroke-width="0.05"
+          strokeWidth="0.05"
         />
       </g>
     </svg>
   </div>
 );
 
-/*
 RoomViz.propTypes = {
-  rows: PropTypes.number.isRequired,
-  cols: PropTypes.number.isRequired,
-  dirtLocations: PropTypes.arrayOf(
-    PropTypes.arrayOf(PropTypes.number.isRequired)
-  )
+  roomSize: PropTypes.arrayOf(PropTypes.number.isRequired),
+  dirtPatches: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
+  directions: PropTypes.arrayOf(PropTypes.number.isRequired),
+  isInputValid: PropTypes.bool.isRequired,
+  hasCompletedAnimation: PropTypes.bool.isRequired
 };
-*/
+
 export default RoomViz;

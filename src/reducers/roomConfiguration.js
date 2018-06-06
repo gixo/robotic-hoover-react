@@ -4,7 +4,7 @@ const initialState = {
   inputFileName: "input.txt",
   isFetching: true,
   inputTextValue: "Loading...",
-  roomSize: [],
+  roomSize: [5, 5],
   isInputValid: true
 };
 

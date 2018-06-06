@@ -1,9 +1,8 @@
 //import configureStore from "redux-mock-store";
-import configureMockStore from "redux-mock-store";
-import { fetchPosts } from "./input";
-import thunk from "redux-thunk";
+//import configureMockStore from "redux-mock-store";
+//import thunk from "redux-thunk";
 
-const middlewares = [thunk];
+/*const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 const mockResponse = (status, statusText, response) => {
@@ -19,7 +18,7 @@ const mockResponse = (status, statusText, response) => {
 
 const store = mockStore({});
 
-describe("File Input", () => {
+//describe("File Input", () => {
   /*
   test("Correctly parses input file", () => {
     const expectedState = [];
@@ -31,7 +30,7 @@ describe("File Input", () => {
 NNESEESWNWW`);
     expect(parsedInput).toEqual(expectedState);
   });*/
-
+/*
   test("Correctly fetches input file", () => {
     window.fetch = jest.fn().mockImplementation(() =>
       Promise.resolve(
@@ -58,9 +57,9 @@ NNESEESWNWW`
         type: types.FETCH_DATA_SUCCESS,
         data
       });*/
-    });
+//  });
 
-    //   const fetchedFile = fetchPosts("input.txt");
-    //   expect(fetchedFile).toEqual(fetchedFile);
-  });
-});
+//   const fetchedFile = fetchPosts("input.txt");
+//   expect(fetchedFile).toEqual(fetchedFile);
+//});
+//});

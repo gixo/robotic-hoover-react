@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
   <div>
@@ -14,5 +15,10 @@ const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
     />
   </div>
 );
+
+RoomOutput.propTypes = {
+  robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
+  removedDirtPatchesCount: PropTypes.number.isRequired
+};
 
 export default RoomOutput;

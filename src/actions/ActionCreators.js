@@ -1,12 +1,14 @@
 import * as types from "./ActionTypes";
+import { parseInput } from "../api/input";
+import delay from "timeout-as-promise";
 
-export const requestInputFileAction = inputFileName => ({
+export const requestInputFile = inputFileName => ({
   type: types.REQUEST_INPUT_FILE,
   inputFileName,
   isFetching: true
 });
 
-export const receiveInputFileAction = inputTextValue => ({
+export const receiveInputFile = inputTextValue => ({
   type: types.RECEIVE_INPUT_FILE,
   inputTextValue
 });
@@ -111,48 +113,23 @@ const animateSolvSeq = () => (dispatch, getState) => {
   dispatch(robotAnimStarted(timeoutID));
 };
 
-const parseInput = textinput => {
-  if (validateTextInput(textinput)) {
-    const inputLines = textinput.split("\n");
-
-    return {
-      roomSize: inputLines[0].split(" ").map(num => +num),
-      robotPosition: inputLines[1].split(" ").map(num => +num),
-      directions: inputLines[inputLines.length - 1].split(""),
-      dirtPatches: inputLines
-        .slice(2, inputLines.length - 1)
-        .map(line => line.split(" ").map(num => +num)),
-      isInputValid: true
-    };
-  } else return { isInputValid: false };
-};
-
-const validateTextInput = textinput => {
-  //A valid input has at leasat 2 lines with numbers, followed by directions,
-  //we also account for different carriage return types and set max digit size
-  const inputRegExp = /^([0-9]{1,10} [0-9]{1,10}(\r\n|\n|\r)){2,}([NSWE]+)$/;
-  const isMatch = inputRegExp.test(textinput);
-  return isMatch;
-};
-
 // The fetch is triggered (via thunk) the App componentent when the component
 // is added to the mounted to the DOM
 export const fetchInputFile = inputFileURL => dispatch => {
-  dispatch(requestInputFileAction(inputFileURL));
+  dispatch(requestInputFile(inputFileURL));
 
   //Adds a mock delay to simulate network activity
-  setTimeout(function() {
-    return fetch(inputFileURL)
+  return delay(200).then(() =>
+    fetch(inputFileURL)
       .then(function(response) {
         if (!response.ok) throw Error(response.statusText);
         response.text().then(function(data) {
-          dispatch(receiveInputFileAction(data));
-          dispatch(inputTextAreaUpdated(data));
+          dispatch(receiveInputFile(data));
           dispatch(parseStateFromText(data));
         });
       })
-      .catch(error => console.log(error));
-  }, 500);
+      .catch(error => console.log(error))
+  );
 };
 
 //Robot movements

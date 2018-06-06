@@ -13,7 +13,8 @@
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "timeout-as-promise": "^1.0.0"
   },
   "scripts": {
     "start": "cross-env PORT=3002 react-scripts start",
@@ -24,7 +25,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "coverage": "npm test -- --coverage",
-    "lint": "eslint src"
+    "lint": "eslint src test"
   },
   "devDependencies": {
     "ajv": "^6.5.0",
@@ -32,6 +33,8 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-react-app": "^2.1.0",
+    "expect": "^23.1.0",
+    "fetch-mock": "^6.4.3",
     "gh-pages": "^1.2.0",
     "jest-fetch-mock": "^1.6.2",
     "redux-mock-store": "^1.5.1"

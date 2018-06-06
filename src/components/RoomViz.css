@@ -15,3 +15,7 @@ svg.complete {
 svg rect {
   transition: all 0.1s ease;
 }
+
+.fetching rect {
+  visibility: hidden;
+}

@@ -3,7 +3,7 @@ import * as types from "../actions/ActionTypes";
 const initialState = {
   removedDirtPatchesCount: 0,
   dirtPatchesLocations: [],
-  robotPosition: [],
+  robotPosition: [0, 0],
   directions: [],
   timeoutID: 0,
   hasCompletedAnimation: false
