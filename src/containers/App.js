@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import "./App.css";
 import { parseStateFromText } from "../actions/ActionCreators";
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     const { dispatch, inputFileName } = this.props;
     dispatch(fetchInputFile(inputFileName));
