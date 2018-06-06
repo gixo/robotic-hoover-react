@@ -6,9 +6,9 @@ const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
     <textarea
       disabled="true"
       value={
-        "Robot Position: " +
-        robotPosition +
-        "\nRemove Count:" +
+        "Robot Position:\n" +
+        robotPosition.join(" ") +
+        "\n\nPatches removed:\n" +
         removedDirtPatchesCount
       }
     />

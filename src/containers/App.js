@@ -34,7 +34,7 @@ class App extends Component {
             id="back-to-code"
             href="https://github.com/gixo/robotic-hoover-react"
           >
-            Back to code
+            See code
           </a>
         </header>
         <div className="app-content">
