@@ -51,7 +51,7 @@ export class App extends Component {
           </div>
           <ResultOutput
             robotPosition={this.props.robotPosition}
-            removedDirtPatchesCount={this.props.removedDirtPatchesCount}
+            removedDirtCount={this.props.removedDirtCount}
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export class App extends Component {
     directions: PropTypes.arrayOf(PropTypes.string),
     isInputValid: PropTypes.bool.isRequired,
     hasCompletedAnimation: PropTypes.bool.isRequired,
-    removedDirtPatchesCount: PropTypes.number.isRequired,
+    removedDirtCount: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
   };
 }
@@ -80,12 +80,12 @@ const mapStateToProps = state => ({
   inputTextValue: state.roomConfiguration.inputTextValue,
   isFetching: state.roomConfiguration.isFetching,
   roomSize: state.roomConfiguration.roomSize,
-  dirtPatches: state.robotConfiguration.dirtPatchesLocations,
+  dirtPatches: state.robotConfiguration.dirtLocations,
   robotPosition: state.robotConfiguration.robotPosition,
   directions: state.robotConfiguration.directions,
   isInputValid: state.roomConfiguration.isInputValid,
   hasCompletedAnimation: state.robotConfiguration.hasCompletedAnimation,
-  removedDirtPatchesCount: state.robotConfiguration.removedDirtPatchesCount
+  removedDirtCount: state.robotConfiguration.removedDirtCount
 });
 
 export default connect(mapStateToProps)(App);

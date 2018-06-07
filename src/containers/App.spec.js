@@ -16,7 +16,7 @@ function setup() {
     directions: ["N", "S", "W", "E", "E"],
     isInputValid: true,
     hasCompletedAnimation: true,
-    removedDirtPatchesCount: 0,
+    removedDirtCount: 0,
     dispatch: jest.fn()
   };
 

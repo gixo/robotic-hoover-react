@@ -86,3 +86,8 @@ It bundles React in production mode and optimizes the build for the best perform
 
 The build is minified and the filenames include the hashes.<br>
 The app is ready to be deployed!
+
+## TODOs
+
+- increase test coverage
+- responsive layout, for mobile devices

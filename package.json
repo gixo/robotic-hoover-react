@@ -24,11 +24,12 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "coverage": "npm test -- --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/*",
+    "coverage": "npm test -- --coverage --collectCoverageFrom=src/**/*js --collectCoverageFrom=!src/* --collectCoverageFrom=!src/reducers/reducers.js*",
     "lint": "eslint src test"
   },
   "devDependencies": {
     "ajv": "^6.5.0",
+    "assert": "^1.4.1",
     "cross-env": "^5.1.6",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",

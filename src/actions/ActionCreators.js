@@ -44,9 +44,10 @@ export const moveRobotEast = roomState => ({
   roomState
 });
 
-export const removeDirtPatch = robotPosition => ({
+export const removeDirtPatch = (robotPosition, dirtLocations) => ({
   type: types.REMOVE_DIRT_PATCH,
-  robotPosition
+  robotPosition,
+  dirtLocations
 });
 
 export const setRobotCoordinates = robotPosition => ({
@@ -81,36 +82,47 @@ export const parseStateFromText = newInputTextValue => (dispatch, getState) => {
   } else dispatch(incorrectInputPassed(false));
 };
 
-const animateSolvSeq = () => (dispatch, getState) => {
+//The timeout delay can be skipped for facilitating testing
+export const animateSolvSeq = (useTimeout = true) => (dispatch, getState) => {
   const currentState = getState();
   const currentDirections = currentState.robotConfiguration.directions;
-  const timeoutID = setTimeout(function() {
-    if (currentDirections.length > 0) {
-      const nextDirection = currentDirections[0];
-      switch (nextDirection) {
-        case "N":
-          dispatch(triggerNavNorth());
-          break;
-        case "S":
-          dispatch(triggerNavSouth());
-          break;
-        case "W":
-          dispatch(triggerNavWest());
-          break;
-        case "E":
-          dispatch(triggerNavEast());
-          break;
-        default:
-      }
-      dispatch(animateSolvSeq());
-    } else {
-      dispatch(robotAnimEnded());
-      console.log(currentState.robotConfiguration.robotPosition.join(" "));
-      console.log(currentState.robotConfiguration.removedDirtPatchesCount);
-    }
-  }, 500);
+
+  let timeoutID = 0;
+  if (useTimeout) {
+    timeoutID = setTimeout(function() {
+      executeStep(currentDirections, currentState, dispatch);
+    }, 500);
+  } else {
+    executeStep(currentDirections, currentState, dispatch);
+  }
 
   dispatch(robotAnimStarted(timeoutID));
+};
+
+const executeStep = (currentDirections, currentState, dispatch) => {
+  if (currentDirections.length > 0) {
+    const nextDirection = currentDirections[0];
+    switch (nextDirection) {
+      case "N":
+        dispatch(triggerNavNorth());
+        break;
+      case "S":
+        dispatch(triggerNavSouth());
+        break;
+      case "W":
+        dispatch(triggerNavWest());
+        break;
+      case "E":
+        dispatch(triggerNavEast());
+        break;
+      default:
+    }
+    dispatch(animateSolvSeq());
+  } else {
+    dispatch(robotAnimEnded());
+    console.log(currentState.robotConfiguration.robotPosition.join(" "));
+    console.log(currentState.robotConfiguration.removedDirtCount);
+  }
 };
 
 // The fetch is triggered (via thunk) the App componentent when the component
@@ -144,12 +156,13 @@ const moveRobot = applyRobotMovement => (dispatch, getState) => {
   const roomSize = currentState.roomConfiguration.roomSize;
   const robotPosition = currentState.robotConfiguration.robotPosition;
   const directions = currentState.robotConfiguration.directions;
+  const dirtLocations = currentState.robotConfiguration.dirtLocations;
 
   const [robX, robY] = applyRobotMovement(robotPosition);
 
   if (robX < roomSize[0] && robX >= 0 && robY < roomSize[1] && robY >= 0) {
     dispatch(setRobotCoordinates([robX, robY]));
-    dispatch(removeDirtPatch([robX, robY]));
+    dispatch(removeDirtPatch([robX, robY]), dirtLocations);
   }
   dispatch(robotNavStepCompleted(directions));
 };

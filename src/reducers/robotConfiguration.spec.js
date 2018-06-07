@@ -4,8 +4,8 @@ import * as types from "../actions/ActionTypes";
 describe("Robot Configuration Reducer", () => {
   it("Should return the initial state", () => {
     expect(robotConfiguration(undefined, {})).toEqual({
-      removedDirtPatchesCount: 0,
-      dirtPatchesLocations: [],
+      removedDirtCount: 0,
+      dirtLocations: [],
       robotPosition: [0, 0],
       directions: [],
       timeoutID: 0,
@@ -25,12 +25,14 @@ describe("Robot Configuration Reducer", () => {
   });
 
   it("Should REMOVE_DIRT_PATCH", () => {
-    /*    expect(
-      robotConfiguration([], {
-        type: types.REMOVE_DIRT_PATCH,
-        robotPosition: [1, 1]
-      })
-    ).toEqual({ robotPosition: [1, 1] });
-*/
+    expect(
+      robotConfiguration(
+        { dirtLocations: [[1, 1], [2, 2]], removedDirtCount: 1 },
+        { type: types.REMOVE_DIRT_PATCH, robotPosition: [1, 1] }
+      )
+    ).toEqual({
+      dirtLocations: [[2, 2]],
+      removedDirtCount: 2
+    });
   });
 });

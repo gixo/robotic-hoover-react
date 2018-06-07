@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
+const RoomOutput = ({ robotPosition, removedDirtCount }) => (
   <div>
     <p>Result</p>
     <textarea
@@ -10,7 +10,7 @@ const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
         "Robot Position:\n" +
         robotPosition.join(" ") +
         "\n\nPatches removed:\n" +
-        removedDirtPatchesCount
+        removedDirtCount
       }
     />
   </div>
@@ -18,7 +18,7 @@ const RoomOutput = ({ robotPosition, removedDirtPatchesCount }) => (
 
 RoomOutput.propTypes = {
   robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
-  removedDirtPatchesCount: PropTypes.number.isRequired
+  removedDirtCount: PropTypes.number.isRequired
 };
 
 export default RoomOutput;
