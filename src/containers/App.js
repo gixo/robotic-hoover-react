@@ -53,6 +53,9 @@ export class App extends Component {
             robotPosition={this.props.robotPosition}
             removedDirtCount={this.props.removedDirtCount}
           />
+          <p className="error">
+            {!this.props.isInputValid ? this.props.errorMessage : ""}
+          </p>
         </div>
       </div>
     );
@@ -69,6 +72,7 @@ export class App extends Component {
     robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
     directions: PropTypes.arrayOf(PropTypes.string),
     isInputValid: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string,
     hasCompletedAnimation: PropTypes.bool.isRequired,
     removedDirtCount: PropTypes.number.isRequired,
     dispatch: PropTypes.func.isRequired
@@ -84,6 +88,7 @@ const mapStateToProps = state => ({
   robotPosition: state.robotConfiguration.robotPosition,
   directions: state.robotConfiguration.directions,
   isInputValid: state.roomConfiguration.isInputValid,
+  errorMessage: state.roomConfiguration.errorMessage,
   hasCompletedAnimation: state.robotConfiguration.hasCompletedAnimation,
   removedDirtCount: state.robotConfiguration.removedDirtCount
 });

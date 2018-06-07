@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const RoomOutput = ({ robotPosition, removedDirtCount }) => (
+const ResultOutput = ({ robotPosition, removedDirtCount }) => (
   <div>
     <p>Result</p>
     <textarea
@@ -16,9 +16,9 @@ const RoomOutput = ({ robotPosition, removedDirtCount }) => (
   </div>
 );
 
-RoomOutput.propTypes = {
+ResultOutput.propTypes = {
   robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
   removedDirtCount: PropTypes.number.isRequired
 };
 
-export default RoomOutput;
+export default ResultOutput;

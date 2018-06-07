@@ -25,7 +25,8 @@ const roomConfiguration = (state = initialState, action) => {
     case types.INCORRECT_INPUT_PASSED:
       return {
         ...state,
-        isInputValid: false
+        isInputValid: false,
+        errorMessage: action.errorMessage
       };
     case types.ROOM_SPEC_UPDATED:
       return {

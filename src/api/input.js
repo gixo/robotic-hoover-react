@@ -23,30 +23,46 @@ export const parseInput = textinput => {
     const maxX = roomState.roomSize[0];
     const maxY = roomState.roomSize[1];
 
-    const isPositionOufOfBounds =
+    const isRobotPositionOufOfBounds =
       roomState.robotPosition[0] >= maxX || roomState.robotPosition[1] >= maxY;
+
+    if (isRobotPositionOufOfBounds)
+      return {
+        isInputValid: false,
+        errorMessage:
+          "The hoover robot is outside the boundaries of the room. Please amend the robot location and try again."
+      };
 
     const isDirtPatchesOutofBounds = roomState.dirtPatches.some(
       coord => coord[1] > maxY || coord[1] >= maxY
     );
 
+    if (isDirtPatchesOutofBounds)
+      return {
+        isInputValid: false,
+        errorMessage:
+          "Some of the dirt patch locations are outside the boundaries of the room."
+      };
+
     const locationsSet = new Set(
       roomState.dirtPatches.map(coord => coord[0] + "-" + coord[1])
-    );
-    locationsSet.add(
-      roomState.robotPosition[0] + "-" + roomState.robotPosition[1]
-    );
+    ).add(roomState.robotPosition[0] + "-" + roomState.robotPosition[1]);
 
     const hasOverlappingPositions =
       locationsSet.size !== roomState.dirtPatches.length + 1;
 
-    if (
-      isPositionOufOfBounds ||
-      isDirtPatchesOutofBounds ||
-      hasOverlappingPositions
-    )
-      return { isInputValid: false };
+    if (hasOverlappingPositions)
+      return {
+        isInputValid: false,
+        errorMessage:
+          "Some of the dirt patch locations overlap. Please correct your input and try again."
+      };
 
     return roomState;
-  } else return { isInputValid: false };
+  } else
+    return {
+      isInputValid: false,
+      errorMessage:
+        "Unable to parse input text. Please correct your input and try again."
+    };
 };

@@ -13,9 +13,10 @@ export const receiveInputFile = inputTextValue => ({
   inputTextValue
 });
 
-export const incorrectInputPassed = isInputValid => ({
+export const incorrectInputPassed = (isInputValid, errorMessage) => ({
   type: types.INCORRECT_INPUT_PASSED,
-  isInputValid
+  isInputValid,
+  errorMessage
 });
 
 export const inputTextAreaUpdated = newInputTextValue => ({
@@ -74,12 +75,11 @@ export const parseStateFromText = newInputTextValue => (dispatch, getState) => {
   dispatch(inputTextAreaUpdated(newInputTextValue));
   const timeoutID = getState().robotConfiguration.timeoutID;
   clearTimeout(timeoutID);
-
   if (newRoomState.isInputValid) {
     dispatch(roomSpecUpdated(newRoomState));
     dispatch(robotSpecUpdated(newRoomState));
     dispatch(animateSolvSeq());
-  } else dispatch(incorrectInputPassed(false));
+  } else dispatch(incorrectInputPassed(false, newRoomState.errorMessage));
 };
 
 //The timeout delay can be skipped for facilitating testing

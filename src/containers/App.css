@@ -43,3 +43,7 @@
   height: 200px;
   margin: 0px 30px;
 }
+
+p.error {
+  color: red;
+}

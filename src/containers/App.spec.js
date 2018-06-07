@@ -41,8 +41,26 @@ describe("components", () => {
       const { enzymeWrapper } = setup();
       const roomSpecProps = enzymeWrapper.find("RoomSpec").props();
       const roomVizProps = enzymeWrapper.find("RoomViz").props();
+      const resultOutputProps = enzymeWrapper.find("ResultOutput").props();
+      const appProps = enzymeWrapper.props();
+
+      expect(appProps.isFetching).toBe(true);
       expect(roomSpecProps.disabled).toBe(true);
       expect(roomVizProps.hasCompletedAnimation).toBe(true);
+      expect(resultOutputProps.removedDirtCount).toBe(0);
+    });
+
+    it("Fires onchange correctly", () => {
+      const { enzymeWrapper } = setup();
+      const event = { target: { value: "" } };
+      jest.resetAllMocks();
+
+      expect(
+        enzymeWrapper
+          .find("RoomSpec")
+          .find("textarea")
+          .simulate("change", event)
+      );
     });
   });
 });

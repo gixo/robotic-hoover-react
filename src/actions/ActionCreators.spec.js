@@ -20,6 +20,15 @@ describe("Action Creators", () => {
     expect(actions.requestInputFile(inputFileName)).toEqual(expectedAction);
   });
 
+  it("Should create an action to request input file", () => {
+    const inputValue = "2 2\n1 1\nNN";
+    const expectedAction = {
+      type: types.RECEIVE_INPUT_FILE,
+      inputTextValue: inputValue
+    };
+    expect(actions.receiveInputFile(inputValue)).toEqual(expectedAction);
+  });
+
   //todo: add tests for all sync action creators
 });
 
