@@ -10,6 +10,9 @@
 
 .app-title {
   font-size: 1.5em;
+  color: #e8e8e8;
+  margin-top: 1px;
+  margin-bottom: 15px;
 }
 
 .app-content {
@@ -23,16 +26,19 @@
 }
 
 #back-to-code {
-  position: absolute;
   top: 0;
   right: 0;
-
-  padding: 1em;
+  padding: 0.3em 0.5em;
   border: 1px dashed currentColor;
   font-family: monospace;
   font-size: 1.25rem;
-
   color: inherit;
+  background-color: #797979;
+  text-decoration: none;
+}
+
+#back-to-code:hover {
+  background-color: transparent;
 }
 
 .app-content textarea {
