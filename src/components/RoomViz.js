@@ -7,7 +7,6 @@ const RoomViz = ({
   roomSize = [5, 5],
   dirtPatches = [],
   robotPosition = [0, 0],
-  directions = [],
   isInputValid = true,
   hasCompletedAnimation = false
 }) => (
@@ -54,7 +53,6 @@ RoomViz.propTypes = {
   roomSize: PropTypes.arrayOf(PropTypes.number.isRequired),
   dirtPatches: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
-  directions: PropTypes.arrayOf(PropTypes.number.isRequired),
   isInputValid: PropTypes.bool.isRequired,
   hasCompletedAnimation: PropTypes.bool.isRequired
 };

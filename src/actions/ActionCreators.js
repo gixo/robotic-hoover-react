@@ -40,11 +40,6 @@ export const robotNavigationStarted = (robotPosition, directions) => ({
   directions
 });
 
-export const moveRobotEast = roomState => ({
-  type: types.MOVE_ROBOT_EAST,
-  roomState
-});
-
 export const removeDirtPatch = (robotPosition, dirtLocations) => ({
   type: types.REMOVE_DIRT_PATCH,
   robotPosition,
@@ -151,7 +146,7 @@ const moveWest = location => [location[0] - 1, location[1]];
 const moveEast = location => [location[0] + 1, location[1]];
 
 // Thunk for robot navigation
-const moveRobot = applyRobotMovement => (dispatch, getState) => {
+export const moveRobot = applyRobotMovement => (dispatch, getState) => {
   const currentState = getState();
   const roomSize = currentState.roomConfiguration.roomSize;
   const robotPosition = currentState.robotConfiguration.robotPosition;
