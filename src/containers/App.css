@@ -13,11 +13,13 @@
 }
 
 .app-content {
-  margin-top: 20px;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .app-content > div {
   display: inline-block;
+  vertical-align: top;
 }
 
 #back-to-code {
