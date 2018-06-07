@@ -55,7 +55,7 @@ export const parseInput = textinput => {
       return {
         isInputValid: false,
         errorMessage:
-          "Some of the dirt patch locations overlap. Please correct your input and try again."
+          "Some of the locations overlap. Please correct your input and try again."
       };
 
     return roomState;
