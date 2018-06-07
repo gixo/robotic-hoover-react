@@ -5,6 +5,13 @@
   "private": true,
   "url": "https://github.com/gixo/robotic-hoover-react",
   "license": "MIT",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*js",
+      "!src/*",
+      "!src/reducers/reducers.js*"
+    ]
+  },
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
