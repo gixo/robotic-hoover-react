@@ -34,7 +34,7 @@ export const parseInput = textinput => {
       };
 
     const isDirtPatchesOutofBounds = roomState.dirtPatches.some(
-      coord => coord[1] > maxY || coord[1] >= maxY
+      coord => coord[0] >= maxX || coord[1] >= maxY
     );
 
     if (isDirtPatchesOutofBounds)
