@@ -44,7 +44,7 @@ export class App extends Component {
               roomSize={this.props.roomSize}
               dirtPatches={this.props.dirtPatches}
               robotPosition={this.props.robotPosition}
-              directions={this.props.robotLocation}
+              directions={this.props.robotPosition}
               isInputValid={this.props.isInputValid}
               hasCompletedAnimation={this.props.hasCompletedAnimation}
             />

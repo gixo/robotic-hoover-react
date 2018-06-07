@@ -26,7 +26,7 @@ describe("Action Creators", () => {
 describe("Should fetch input file", () => {
   it("Should dispatch actions after fetching input file", () => {
     const inputFileURL = "input.txt";
-    const mockFileInput = "1 1\n2 3\n3 4\nNS";
+    const mockFileInput = "10 10\n2 3\n3 4\nNS";
 
     fetchMock.getOnce(inputFileURL, {
       body: mockFileInput,

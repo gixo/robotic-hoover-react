@@ -44,9 +44,9 @@ export const moveRobotEast = roomState => ({
   roomState
 });
 
-export const removeDirtPatch = robotLocation => ({
+export const removeDirtPatch = robotPosition => ({
   type: types.REMOVE_DIRT_PATCH,
-  robotLocation
+  robotPosition
 });
 
 export const setRobotCoordinates = robotPosition => ({

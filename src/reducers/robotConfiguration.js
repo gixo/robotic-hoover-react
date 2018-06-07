@@ -39,7 +39,7 @@ const robotConfiguration = (state = initialState, action) => {
         directions: action.newRoomState.directions
       };
     case types.REMOVE_DIRT_PATCH:
-      const robotLoc = action.robotLocation;
+      const robotLoc = action.robotPosition;
       const dirtPatchesLocations = state.dirtPatchesLocations;
       const newDirtPatches = dirtPatchesLocations.filter(
         patch => !(patch[0] === robotLoc[0] && patch[1] === robotLoc[1])
