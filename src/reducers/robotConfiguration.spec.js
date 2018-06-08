@@ -24,6 +24,29 @@ describe("Robot Configuration Reducer", () => {
     });
   });
 
+  it("Should handle ROBOT_ANIM_STARTED", () => {
+    expect(
+      robotConfiguration(
+        {},
+        {
+          type: types.ROBOT_ANIM_STARTED,
+          timeoutID: 0
+        }
+      )
+    ).toEqual({ hasCompletedAnimation: false, timeoutID: 0 });
+  });
+
+  it("Should handle ROBOT_ANIM_ENDED", () => {
+    expect(
+      robotConfiguration(
+        {},
+        {
+          type: types.ROBOT_ANIM_ENDED,
+          timeoutID: 0
+        }
+      )
+    ).toEqual({ hasCompletedAnimation: true });
+  });
   it("Should handle ROBOT_NAV_STEP_COMPLETED", () => {
     expect(
       robotConfiguration(
