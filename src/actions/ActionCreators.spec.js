@@ -91,29 +91,62 @@ describe("Action Creators", () => {
   });
 
   it("Should process robot movement", () => {
-    const store = mockStore({
-      roomConfiguration: {
-        roomSize: [5, 5]
-      },
-      robotConfiguration: {
-        robotPosition: [1, 1],
-        directions: ["N", "W"],
-        dirtLocations: [[1, 2], [2, 2]]
+    let testNav = (
+      navigationAction,
+      expectedPosition = [1, 1],
+      shouldHitWall = false
+    ) => {
+      //When hitting a wall, the robot shoudn't move after an action
+      let initialPosition = [1, 1];
+      if (shouldHitWall) initialPosition = expectedPosition;
+
+      const store = mockStore({
+        roomConfiguration: {
+          roomSize: [5, 5]
+        },
+        robotConfiguration: {
+          robotPosition: initialPosition,
+          directions: ["N", "W"],
+          dirtLocations: [[1, 2], [2, 2]]
+        }
+      });
+
+      const expectedActions = [
+        types.SET_ROBOT_COORDINATES,
+        types.REMOVE_DIRT_PATCH,
+        types.ROBOT_NAV_STEP_COMPLETED
+      ];
+
+      store.dispatch(navigationAction());
+      let returnedActions = store.getActions();
+
+      if (!shouldHitWall) {
+        let robotCoordinates = returnedActions.filter(
+          action => action.type === types.SET_ROBOT_COORDINATES
+        )[0].robotPosition;
+        const actionsRetrieved = returnedActions.map(action => action.type);
+        expect(actionsRetrieved).toEqual(expectedActions);
+        expect(robotCoordinates).toEqual(expectedPosition);
+      } else {
+        let returnedAction = returnedActions.map(action => action.type);
+        expect(returnedAction[0]).toEqual(types.ROBOT_NAV_STEP_COMPLETED);
       }
-    });
+    };
 
-    const expectedActions = [
-      types.SET_ROBOT_COORDINATES,
-      types.REMOVE_DIRT_PATCH,
-      types.ROBOT_NAV_STEP_COMPLETED
-    ];
+    //Test typical case navigation
+    testNav(actions.triggerNavNorth, [1, 2]);
+    testNav(actions.triggerNavSouth, [1, 0]);
+    testNav(actions.triggerNavWest, [0, 1]);
+    testNav(actions.triggerNavEast, [2, 1]);
 
-    store.dispatch(actions.triggerNavNorth());
-    const actionsRetrieved = store.getActions().map(action => action.type);
-
-    expect(actionsRetrieved).toEqual(expectedActions);
+    //Test hitting the wall
+    testNav(actions.triggerNavNorth, [1, 4], true);
+    testNav(actions.triggerNavSouth, [1, 0], true);
+    testNav(actions.triggerNavWest, [0, 1], true);
+    testNav(actions.triggerNavEast, [4, 1], true);
   });
-  it("Start animation solve sequence", () => {
+
+  it("Start animation solve sequence with directions", () => {
     const store = mockStore({
       roomConfiguration: {
         roomSize: [5, 5]
@@ -135,7 +168,25 @@ describe("Action Creators", () => {
 
     store.dispatch(actions.animateSolvSeq(false));
     const actionsRetrieved = store.getActions().map(action => action.type);
+    expect(actionsRetrieved).toEqual(expectedActions);
+  });
 
+  it("Start animation solve sequence with empty directions", () => {
+    const store = mockStore({
+      roomConfiguration: {
+        roomSize: [5, 5]
+      },
+      robotConfiguration: {
+        robotPosition: [1, 1],
+        directions: [],
+        dirtLocations: [[1, 2], [2, 2]]
+      }
+    });
+
+    const expectedActions = [types.ROBOT_ANIM_ENDED, types.ROBOT_ANIM_STARTED];
+
+    store.dispatch(actions.animateSolvSeq(false));
+    const actionsRetrieved = store.getActions().map(action => action.type);
     expect(actionsRetrieved).toEqual(expectedActions);
   });
 });
