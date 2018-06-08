@@ -35,22 +35,22 @@ const robotConfiguration = (state = initialState, action) => {
         ...state,
         robotPosition: action.newRoomState.robotPosition,
         removedDirtCount: 0,
-        dirtLocations: action.newRoomState.dirtPatches,
+        dirtLocations: action.newRoomState.dirtLocations,
         directions: action.newRoomState.directions
       };
     case types.REMOVE_DIRT_PATCH:
       const robotLoc = action.robotPosition;
       const dirtLocations = state.dirtLocations;
-      const newDirtPatches = dirtLocations.filter(
+      const newDirtLocations = dirtLocations.filter(
         patch => !(patch[0] === robotLoc[0] && patch[1] === robotLoc[1])
       );
 
-      if (newDirtPatches.length !== dirtLocations.length)
+      if (newDirtLocations.length !== dirtLocations.length)
         state.removedDirtCount++;
 
       return {
         ...state,
-        dirtLocations: newDirtPatches,
+        dirtLocations: newDirtLocations,
         removedDirtCount: state.removedDirtCount
       };
     default:

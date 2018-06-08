@@ -42,7 +42,7 @@ export class App extends Component {
           >
             <RoomViz
               roomSize={this.props.roomSize}
-              dirtPatches={this.props.dirtPatches}
+              dirtLocations={this.props.dirtLocations}
               robotPosition={this.props.robotPosition}
               directions={this.props.robotPosition}
               isInputValid={this.props.isInputValid}
@@ -66,7 +66,7 @@ export class App extends Component {
     inputTextValue: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     roomSize: PropTypes.arrayOf(PropTypes.number.isRequired),
-    dirtPatches: PropTypes.arrayOf(
+    dirtLocations: PropTypes.arrayOf(
       PropTypes.arrayOf(PropTypes.number.isRequired)
     ),
     robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
@@ -84,7 +84,7 @@ const mapStateToProps = state => ({
   inputTextValue: state.roomConfiguration.inputTextValue,
   isFetching: state.roomConfiguration.isFetching,
   roomSize: state.roomConfiguration.roomSize,
-  dirtPatches: state.robotConfiguration.dirtLocations,
+  dirtLocations: state.robotConfiguration.dirtLocations,
   robotPosition: state.robotConfiguration.robotPosition,
   directions: state.robotConfiguration.directions,
   isInputValid: state.roomConfiguration.isInputValid,

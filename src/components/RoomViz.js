@@ -5,7 +5,7 @@ import "./RoomViz.css";
 
 const RoomViz = ({
   roomSize = [5, 5],
-  dirtPatches = [],
+  dirtLocations = [],
   robotPosition = [0, 0],
   isInputValid = true,
   hasCompletedAnimation = false
@@ -20,7 +20,7 @@ const RoomViz = ({
       preserveAspectRatio="none"
     >
       <g>
-        {dirtPatches.map(([x, y]) => (
+        {dirtLocations.map(([x, y]) => (
           <circle
             key={x + "-" + y}
             cx={+x + 0.5}
@@ -51,7 +51,7 @@ const RoomViz = ({
 
 RoomViz.propTypes = {
   roomSize: PropTypes.arrayOf(PropTypes.number.isRequired),
-  dirtPatches: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  dirtLocations: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   robotPosition: PropTypes.arrayOf(PropTypes.number.isRequired),
   isInputValid: PropTypes.bool.isRequired,
   hasCompletedAnimation: PropTypes.bool.isRequired

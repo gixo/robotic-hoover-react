@@ -14,7 +14,7 @@ export const parseInput = textinput => {
       roomSize: inputLines[0].split(" ").map(num => +num),
       robotPosition: inputLines[1].split(" ").map(num => +num),
       directions: inputLines[inputLines.length - 1].split(""),
-      dirtPatches: inputLines
+      dirtLocations: inputLines
         .slice(2, inputLines.length - 1)
         .map(line => line.split(" ").map(num => +num)),
       isInputValid: true
@@ -33,11 +33,11 @@ export const parseInput = textinput => {
           "The hoover robot is outside the boundaries of the room. Please amend the robot location and try again."
       };
 
-    const isDirtPatchesOutofBounds = roomState.dirtPatches.some(
+    const isDirtLocationsOutofBounds = roomState.dirtLocations.some(
       coord => coord[0] >= maxX || coord[1] >= maxY
     );
 
-    if (isDirtPatchesOutofBounds)
+    if (isDirtLocationsOutofBounds)
       return {
         isInputValid: false,
         errorMessage:
@@ -45,11 +45,11 @@ export const parseInput = textinput => {
       };
 
     const locationsSet = new Set(
-      roomState.dirtPatches.map(coord => coord[0] + "-" + coord[1])
+      roomState.dirtLocations.map(coord => coord[0] + "-" + coord[1])
     ).add(roomState.robotPosition[0] + "-" + roomState.robotPosition[1]);
 
     const hasOverlappingPositions =
-      locationsSet.size !== roomState.dirtPatches.length + 1;
+      locationsSet.size !== roomState.dirtLocations.length + 1;
 
     if (hasOverlappingPositions)
       return {

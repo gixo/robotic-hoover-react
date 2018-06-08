@@ -24,6 +24,40 @@ describe("Robot Configuration Reducer", () => {
     });
   });
 
+  it("Should handle ROBOT_NAV_STEP_COMPLETED", () => {
+    expect(
+      robotConfiguration(
+        {},
+        {
+          type: types.ROBOT_NAV_STEP_COMPLETED,
+          directions: ["N", "S"]
+        }
+      )
+    ).toEqual({ directions: ["S"], timeoutID: undefined });
+  });
+
+  it("Should ROBOT_SPEC_UPDATED", () => {
+    expect(
+      robotConfiguration(
+        { newRoomState: { robotPosition: [2, 2], dirtLocations: [[1, 1]] } },
+        {
+          type: types.ROBOT_SPEC_UPDATED,
+          newRoomState: {
+            robotPosition: [2, 2],
+            dirtLocations: [[1, 1]],
+            directions: ["N"]
+          }
+        }
+      )
+    ).toEqual({
+      directions: ["N"],
+      dirtLocations: [[1, 1]],
+      newRoomState: { dirtLocations: [[1, 1]], robotPosition: [2, 2] },
+      removedDirtCount: 0,
+      robotPosition: [2, 2]
+    });
+  });
+
   it("Should REMOVE_DIRT_PATCH", () => {
     expect(
       robotConfiguration(

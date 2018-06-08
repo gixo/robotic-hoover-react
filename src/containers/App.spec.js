@@ -11,7 +11,7 @@ function setup() {
     inputTextValue: "",
     isFetching: true,
     roomSize: [5, 5],
-    dirtPatches: [[1, 1], [2, 2]],
+    dirtLocations: [[1, 1], [2, 2]],
     robotPosition: [0, 0],
     directions: ["N", "S", "W", "E", "E"],
     isInputValid: true,

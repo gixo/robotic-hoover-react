@@ -5,7 +5,7 @@ import RoomViz from "./RoomViz";
 const setup = (
   isInputValid = true,
   roomSize = [5, 5],
-  dirtPatches = [[1, 1]],
+  dirtLocations = [[1, 1]],
   robotPosition = [0, 0],
   directions = ["N", "S", ""],
   hasCompletedAnimation = true
@@ -13,7 +13,7 @@ const setup = (
   const component = shallow(
     <RoomViz
       roomSize={roomSize}
-      dirtPatches={dirtPatches}
+      dirtLocations={dirtLocations}
       robotPosition={robotPosition}
       directions={robotPosition}
       isInputValid={isInputValid}
@@ -30,7 +30,7 @@ const setup = (
   };
 };
 
-describe("Cart component", () => {
+describe("RoomViz component", () => {
   it("Should display title", () => {
     const { p } = setup();
     expect(p.text()).toMatch("Room visualization");
