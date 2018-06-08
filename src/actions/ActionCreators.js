@@ -86,7 +86,7 @@ export const animateSolvSeq = (useTimeout = true) => (dispatch, getState) => {
   if (useTimeout) {
     timeoutID = setTimeout(function() {
       executeStep(currentDirections, currentState, dispatch);
-    }, 500);
+    }, 250);
   } else {
     executeStep(currentDirections, currentState, dispatch);
   }

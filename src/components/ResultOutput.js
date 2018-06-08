@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ResultOutput = ({ robotPosition, removedDirtCount }) => (
-  <div>
+  <div className="result-output">
     <p>Result</p>
     <textarea
       disabled="true"

@@ -1,3 +1,16 @@
+:root {
+  --main-accent-color: #ececec;
+}
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 .app {
   text-align: center;
 }
@@ -42,7 +55,18 @@
 }
 
 .app-content textarea {
-  height: 196px;
+  height: 199px;
+  padding: 8px;
+  border: 4px solid var(--main-accent-color);
+}
+
+.app-content textarea:disabled {
+  background-color: var(--main-accent-color);
+}
+
+.app-content .result-output textarea {
+  resize: none;
+  background-color: var(--main-accent-color);
 }
 
 .data-viz {
