@@ -4,7 +4,7 @@ import * as actions from "./ActionCreators";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import fetchMock from "fetch-mock";
-import expect, { createSpy } from "expect";
+import expect from "expect";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -147,28 +147,32 @@ describe("Action Creators", () => {
   });
 
   it("Start animation solve sequence with directions", () => {
-    const store = mockStore({
-      roomConfiguration: {
-        roomSize: [5, 5]
-      },
-      robotConfiguration: {
-        robotPosition: [1, 1],
-        directions: ["N", "W"],
-        dirtLocations: [[1, 2], [2, 2]]
-      }
-    });
+    const testAnimSesq = directions => {
+      const store = mockStore({
+        roomConfiguration: {
+          roomSize: [5, 5]
+        },
+        robotConfiguration: {
+          robotPosition: [1, 1],
+          directions: [directions],
+          dirtLocations: [[1, 2], [2, 2]]
+        }
+      });
 
-    const expectedActions = [
-      types.SET_ROBOT_COORDINATES,
-      types.REMOVE_DIRT_PATCH,
-      types.ROBOT_NAV_STEP_COMPLETED,
-      types.ROBOT_ANIM_STARTED,
-      types.ROBOT_ANIM_STARTED
-    ];
+      const expectedActions = [
+        types.SET_ROBOT_COORDINATES,
+        types.REMOVE_DIRT_PATCH,
+        types.ROBOT_NAV_STEP_COMPLETED,
+        types.ROBOT_ANIM_STARTED,
+        types.ROBOT_ANIM_STARTED
+      ];
 
-    store.dispatch(actions.animateSolvSeq(false));
-    const actionsRetrieved = store.getActions().map(action => action.type);
-    expect(actionsRetrieved).toEqual(expectedActions);
+      store.dispatch(actions.animateSolvSeq(false));
+      const actionsRetrieved = store.getActions().map(action => action.type);
+      expect(actionsRetrieved).toEqual(expectedActions);
+    };
+
+    "NSWE".split("").forEach(testAnimSesq);
   });
 
   it("Start animation solve sequence with empty directions", () => {
@@ -207,7 +211,10 @@ describe("Should fetch input file", () => {
         inputFileName: inputFileURL
       },
       { type: types.RECEIVE_INPUT_FILE, inputTextValue: mockFileInput },
-      { type: types.INPUT_TEXT_AREA_UPDATED, newInputTextValue: mockFileInput },
+      {
+        type: types.INPUT_TEXT_AREA_UPDATED,
+        newInputTextValue: mockFileInput
+      },
       { type: types.ROOM_SPEC_UPDATED },
       { type: types.ROBOT_SPEC_UPDATED },
       { type: types.ROBOT_ANIM_STARTED }
@@ -225,27 +232,17 @@ describe("Should fetch input file", () => {
 
   it("Should dispatch actions after fetching incorrect input file", () => {
     const inputFileURL = "input2.txt";
-    const mockFileInput = "10 10\n2 3\n3 4";
+    const mockFileInput = "10 10\n2 3\n3 5";
 
     fetchMock.getOnce(inputFileURL, {
       body: mockFileInput,
-      headers: { "content-type": "text/plain" }
+      headers: { "content-type": "text/plain" },
+      status: 500
     });
 
-    const expectedActions = [
-      { type: types.REQUEST_INPUT_FILE },
-      { type: types.RECEIVE_INPUT_FILE },
-      { type: types.INPUT_TEXT_AREA_UPDATED },
-      { type: types.INCORRECT_INPUT_PASSED }
-    ];
-
     const store = mockStore({ robotConfiguration: { timeoutID: 0 } });
-    return store.dispatch(actions.fetchInputFile(inputFileURL)).then(() => {
-      const actionsRetrieved = store.getActions().map(action => action.type);
-
-      expect(actionsRetrieved).toEqual(
-        expectedActions.map(action => action.type)
-      );
+    return store.dispatch(actions.fetchInputFile(inputFileURL)).catch(error => {
+      expect(error.message).toBe("Internal Server Error");
     });
   });
 });

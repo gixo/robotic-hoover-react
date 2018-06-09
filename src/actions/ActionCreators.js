@@ -127,15 +127,15 @@ export const fetchInputFile = inputFileURL => dispatch => {
 
   //Adds a mock delay to simulate network activity
   return delay(200).then(() =>
-    fetch(inputFileURL)
-      .then(function(response) {
-        if (!response.ok) throw Error(response.statusText);
+    fetch(inputFileURL).then(function(response) {
+      if (!response.ok) throw Error(response.statusText);
+      else {
         response.text().then(function(data) {
           dispatch(receiveInputFile(data));
           dispatch(parseStateFromText(data));
         });
-      })
-      .catch(error => console.log(error))
+      }
+    })
   );
 };
 
