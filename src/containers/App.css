@@ -62,11 +62,7 @@ html {
 
 .app-content textarea:disabled {
   background-color: var(--main-accent-color);
-}
-
-.app-content .result-output textarea {
   resize: none;
-  background-color: var(--main-accent-color);
 }
 
 .data-viz {
