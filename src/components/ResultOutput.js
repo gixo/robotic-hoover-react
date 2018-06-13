@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 
 const ResultOutput = ({ robotPosition, removedDirtCount }) => (
   <div className="result-output">
-    <p>Result</p>
-    <textarea
-      disabled="true"
-      value={
-        "Robot Position:\n" +
-        robotPosition.join(" ") +
-        "\n\nPatches removed:\n" +
-        removedDirtCount
-      }
-    />
+    <label>
+      Result
+      <textarea
+        disabled="true"
+        value={
+          "Robot Position:\n" +
+          robotPosition.join(" ") +
+          "\n\nPatches removed:\n" +
+          removedDirtCount
+        }
+      />
+    </label>
   </div>
 );
 

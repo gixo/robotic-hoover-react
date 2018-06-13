@@ -10,8 +10,8 @@ const RoomViz = ({
   isInputValid = true,
   hasCompletedAnimation = false
 }) => (
-  <div>
-    <p>Room visualization</p>
+  <label>
+    Room visualization
     <svg
       className={
         isInputValid ? (hasCompletedAnimation ? "complete" : "valid") : "error"
@@ -46,7 +46,7 @@ const RoomViz = ({
         />
       </g>
     </svg>
-  </div>
+  </label>
 );
 
 RoomViz.propTypes = {

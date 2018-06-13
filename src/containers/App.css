@@ -23,7 +23,7 @@ html {
 
 .app-title {
   font-size: 1.5em;
-  color: #e8e8e8;
+  color: #ececec;
   margin-top: 1px;
   margin-bottom: 15px;
 }
@@ -36,6 +36,16 @@ html {
 .app-content > div {
   display: inline-block;
   vertical-align: top;
+  width: 190px;
+}
+
+.app-content > div.data-viz {
+  width: 200px;
+}
+
+label {
+  display: block;
+  padding-top: 17px;
 }
 
 #back-to-code {
@@ -46,7 +56,7 @@ html {
   font-family: monospace;
   font-size: 1.25rem;
   color: inherit;
-  background-color: #797979;
+  background-color: #616161;
   text-decoration: none;
 }
 
@@ -58,6 +68,18 @@ html {
   height: 199px;
   padding: 8px;
   border: 4px solid var(--main-accent-color);
+  margin-top: 16px;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 430px) {
+  .app-content > div {
+    width: 200px;
+  }
+  .app-content textarea {
+    font-size: 1rem;
+    width: 200px;
+  }
 }
 
 .app-content textarea:disabled {
@@ -69,7 +91,7 @@ html {
   display: inline-block;
   width: 200px;
   height: 252px;
-  margin: 0px 30px;
+  margin: 0px 20px;
 }
 
 p.error {

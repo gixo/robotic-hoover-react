@@ -23,7 +23,7 @@ const setup = (
 
   return {
     component: component,
-    p: component.find("p"),
+    label: component.find("label"),
     svg: component.find("svg"),
     circle: component.find("circle"),
     rect: component.find("rect")
@@ -32,8 +32,8 @@ const setup = (
 
 describe("RoomViz component", () => {
   it("Should display title", () => {
-    const { p } = setup();
-    expect(p.text()).toMatch("Room visualization");
+    const { label } = setup();
+    expect(label.text()).toMatch("Room visualization");
   });
 
   it("Should render svg box complete", () => {
