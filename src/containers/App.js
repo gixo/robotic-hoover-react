@@ -27,6 +27,8 @@ export class App extends Component {
           <a
             id="back-to-code"
             href="https://github.com/gixo/robotic-hoover-react"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             See code
           </a>

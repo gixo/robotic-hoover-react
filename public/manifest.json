@@ -1,15 +1,133 @@
 {
-  "short_name": "React Redux hoover navigation app",
-  "name": "Create React App Sample",
+  "short_name": "RoboHoover",
+  "name": "Robotic hoover navigation app",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/robotic-hoover-react/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/a90855df-5c3e-9235-dbfb-c3e1c3a1f982.webPlatform.png",
+      "sizes": "44x44",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/3b992f4f-8cd6-de07-77f0-442ff932f7db.webPlatform.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/855ca027-d7b0-61e3-bf86-178c2f6ee4b4.webPlatform.png",
+      "sizes": "1240x600",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/8a4e8416-ca5b-c2d3-d0fb-3ac8c4cd67a5.webPlatform.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/e1f85c2c-af25-1518-8aa3-fabc0b67199c.webPlatform.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/8b77f2c6-4a24-a8df-e28c-6fb306d20204.webPlatform.png",
+      "sizes": "88x88",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/a99a6ce7-0f98-3138-a987-aa980fb4eedc.webPlatform.png",
+      "sizes": "24x24",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/411bf876-be4a-5555-bbb8-3e035c0ec990.webPlatform.png",
+      "sizes": "50x50",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/f4c8089d-0bca-5269-5149-3e99f2facff5.webPlatform.png",
+      "sizes": "620x300",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/f7cec466-5143-1a3a-cb9c-41032191da3d.webPlatform.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/2dcc5541-ceab-6997-d073-28e237304a27.webPlatform.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/3c9e2aec-48f9-e211-bcd3-42d24edb8719.webPlatform.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/790955e4-ea3a-3857-ad0e-e09b17286e08.webPlatform.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/0dc09698-2192-8ac0-9cf4-6af0705b0869.webPlatform.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/d8b32355-566c-b3a0-72a3-fbc42388e709.webPlatform.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/3a4669bb-a67c-ea70-8ec5-781ff4baebbe.webPlatform.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/9664521f-1730-fd79-1ffb-9a8b54816022.webPlatform.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/24f3b6e0-8a0a-662f-1365-88d65e71f7f5.webPlatform.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src":
+        "/robotic-hoover-react/img/87687d7a-244f-00c2-b16b-e8d67401e3e7.webPlatform.png",
+      "sizes": "76x76",
+      "type": "image/png"
     }
   ],
-  "start_url": "./",
+  "start_url": "https://gixo.github.io/robotic-hoover-react/",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "lang": "English",
+  "orientation": "any",
+  "description":
+    "A program that navigates an imaginary robotic hoover through an equally imaginary room."
 }

@@ -25,10 +25,10 @@ describe("Robot Configuration Reducer", () => {
 
   it("Should RECEIVE_INPUT_FILE", () => {
     const config = roomConfiguration(
-      { isFetching: true, roomSize: [5, 5] },
+      { isFetching: true, roomSize: [6, 6] },
       { type: types.RECEIVE_INPUT_FILE, inputTextValue: "3 3\n4 5" }
     );
-    expect(config).toEqual({ isFetching: false, roomSize: [5, 5] });
+    expect(config).toEqual({ isFetching: false, roomSize: [6, 6] });
   });
 
   it("Should handle INPUT_TEXT_AREA_UPDATED", () => {
